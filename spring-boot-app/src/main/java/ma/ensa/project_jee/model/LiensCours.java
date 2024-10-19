@@ -1,5 +1,6 @@
 package ma.ensa.project_jee.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class LiensCours {
     @Column(columnDefinition = "TEXT")
     private String lien;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cours_id")
     private Cours cours;
 }

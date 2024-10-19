@@ -2,6 +2,7 @@ package ma.ensa.project_jee.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Cours {
     @OneToMany(mappedBy = "cours")
     private List<LiensCours> liensCours;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "matiere_id")
     private Matiere matiere;
 }

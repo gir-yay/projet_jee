@@ -1,5 +1,6 @@
 package ma.ensa.project_jee.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +21,9 @@ public class Note {
     private int id;
     private int value;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Etudiant etudiant;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Matiere matiere;
 
 }

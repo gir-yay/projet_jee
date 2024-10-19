@@ -2,6 +2,7 @@ package ma.ensa.project_jee.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -32,7 +33,7 @@ public class Etudiant extends Utilisateur {
 
     @Getter
     @Setter
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "formation_id")
     private Formation formation;
     @Getter

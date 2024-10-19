@@ -1,5 +1,6 @@
 package ma.ensa.project_jee.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,17 +15,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="documents_cours")
+@Entity(name = "documents_cours")
 public class DocumentsCours {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 50)
-    private String  nom;
+    private String nom;
     private String chemin;
 
-    @ManyToOne
-    @JoinColumn(name="cours_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cours_id")
     private Cours cours;
 }

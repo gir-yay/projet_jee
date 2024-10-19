@@ -3,6 +3,7 @@ package ma.ensa.project_jee.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +27,10 @@ public class Matiere {
     private int id;
     @Column(length = 50)
     private String nom;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "module_id")
     private Module module;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enseignant_id")
     private Enseignant enseignant;
 

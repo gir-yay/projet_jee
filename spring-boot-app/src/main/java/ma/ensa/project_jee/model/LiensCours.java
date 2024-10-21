@@ -1,5 +1,7 @@
 package ma.ensa.project_jee.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +26,8 @@ public class LiensCours {
     @Column(columnDefinition = "TEXT")
     private String lien;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="cours_id")
+    @JsonBackReference
     private Cours cours;
 }

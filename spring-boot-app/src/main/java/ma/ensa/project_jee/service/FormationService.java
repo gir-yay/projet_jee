@@ -41,9 +41,7 @@ public class FormationService {
         if(formationNomExists != null){
             return "Formation existe déjà.";
         }
-        Formation formation = new Formation();
-        formation.setNom(formationDto.getNom());
-        formation.setNbrSemestres(formationDto.getNbrSemestres());
+        Formation formation = formationMapper.toFormationEntity(formationDto);
         formationRepository.save(formation);
         return null;
     }

@@ -3,6 +3,9 @@ package ma.ensa.project_jee.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,17 +30,21 @@ public class Matiere {
     private int id;
     @Column(length = 50)
     private String nom;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "module_id")
+    @JsonBackReference
     private Module module;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "enseignant_id")
     private Enseignant enseignant;
 
-    @OneToMany(mappedBy="matiere")
+    @OneToMany(mappedBy="matiere", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Cours> cours;
 
-    @OneToMany(mappedBy="matiere")
+    @OneToMany(mappedBy="matiere", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Note> notes;
 
 }

@@ -57,6 +57,9 @@ public class UtilisateurService {
     }
 
     public String ajouterDirecteur(MultipartFile file) {
+        if(file.isEmpty()) {
+            return "Veuillez choisir un fichier";
+        }
         String fileName = file.getOriginalFilename().toLowerCase();
         if (!fileName.endsWith("xlsx") && !fileName.endsWith("xls") && !fileName.endsWith("csv")) {
             return "Le fichier doit être un fichier Excel ou CSV";
@@ -75,6 +78,7 @@ public class UtilisateurService {
                         directeur.setPrenom(values[1]);
                         directeur.setEmail(values[2]);
                         directeur.setMotDePass(passwordEncoder.encode(values[3]));
+                        directeur.setStatus(true);
                         directeurRepository.save(directeur);
                     }
                 }
@@ -110,6 +114,7 @@ public class UtilisateurService {
                     } else {
                         directeur.setMotDePass(passwordEncoder.encode(row.getCell(3).getStringCellValue()));
                     }
+                    directeur.setStatus(true);
                     directeurRepository.save(directeur);
                 }
                 workbook.close();
@@ -124,6 +129,9 @@ public class UtilisateurService {
     }
 
     public String ajouterEnseignant(MultipartFile file) {
+        if(file.isEmpty()) {
+            return "Veuillez choisir un fichier";
+        }
         String fileName = file.getOriginalFilename().toLowerCase();
         if (!fileName.endsWith("xlsx") && !fileName.endsWith("xls") && !fileName.endsWith("csv")) {
             return "Le fichier doit être un fichier Excel ou CSV";
@@ -142,6 +150,7 @@ public class UtilisateurService {
                         enseignant.setPrenom(values[1]);
                         enseignant.setEmail(values[2]);
                         enseignant.setMotDePass(passwordEncoder.encode(values[3]));
+                        enseignant.setStatus(true);
                         enseignantRepository.save(enseignant);
                     }
                 }
@@ -173,6 +182,7 @@ public class UtilisateurService {
                     } else {
                         enseignant.setMotDePass(passwordEncoder.encode(row.getCell(3).getStringCellValue()));
                     }
+                    enseignant.setStatus(true);
                     enseignantRepository.save(enseignant);
                 }
                 workbook.close();
@@ -187,6 +197,9 @@ public class UtilisateurService {
     }
 
     public String ajouterEtudiant(MultipartFile file) {
+        if(file.isEmpty()) {
+            return "Veuillez choisir un fichier";
+        }
         String fileName = file.getOriginalFilename().toLowerCase();
         if (!fileName.endsWith("xlsx") && !fileName.endsWith("xls") && !fileName.endsWith("csv")) {
             return "Le fichier doit être un fichier Excel ou CSV";
@@ -218,6 +231,7 @@ public class UtilisateurService {
                             return "Une formation dans le fichier n'existe pas, veuillez vérifier les données et réessayer.";
                         }
                         etudiant.setFormation(formationExists.get());
+                        etudiant.setStatus(true);
                         etudiantRepository.save(etudiant);
                     }
                 }
@@ -263,6 +277,7 @@ public class UtilisateurService {
                         return "Une formation dans le fichier n'existe pas, veuillez vérifier les données et réessayer.";
                     }
                     etudiant.setFormation(formationExists.get());
+                    etudiant.setStatus(true);
                     etudiantRepository.save(etudiant);
                 }
                 workbook.close();
@@ -298,6 +313,13 @@ public class UtilisateurService {
         return null;
     }
 
+
+    public Etudiant getEtudiant(int id) {
+        Etudiant etudiant = etudiantRepository.findById(id).orElse(null);
+        System.out.println("\n\n\ncurrentEtu: " + etudiant);
+
+        return etudiant;
+    }
     @PostConstruct
     public void ajouterMainAdmin() {
         Directeur directeur = directeurRepository.findByEmail("salmanbenomar250@gmail.com").orElse(null);
@@ -307,6 +329,7 @@ public class UtilisateurService {
             directeur.setPrenom("Salman");
             directeur.setEmail("salmanbenomar250@gmail.com");
             directeur.setMotDePass(passwordEncoder.encode("12345"));
+            directeur.setStatus(true);
             directeurRepository.save(directeur);
         }
     }

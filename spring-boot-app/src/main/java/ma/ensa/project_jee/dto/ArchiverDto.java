@@ -1,5 +1,6 @@
 package ma.ensa.project_jee.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ArchiverDto {
 
-    @NotNull(message="Le type d'utilisateur est obligatoire.")
+    @NotEmpty(message="Le type d'utilisateur est obligatoire.")
     private String type;
     @NotNull(message="L'id d'utilisateur est obligatoire.")
     private int id;

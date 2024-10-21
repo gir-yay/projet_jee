@@ -1,5 +1,7 @@
 package ma.ensa.project_jee.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,11 +21,13 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int value;
+    private float value;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonBackReference
     private Etudiant etudiant;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonBackReference
     private Matiere matiere;
 
 }

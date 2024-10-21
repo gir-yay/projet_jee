@@ -9,8 +9,12 @@ services:
       - "3306:3306"
 
   spring_app:
-    image: ghizlanera/spring-boot-app:latest 
-    container_name: spring-boot-app-container
+    image: ghizlanera/spring-boot-app:latest
+    container_name: spring-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db  # Use the mysql service name
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: secret
     ports:
       - "8080:8080"
     depends_on:

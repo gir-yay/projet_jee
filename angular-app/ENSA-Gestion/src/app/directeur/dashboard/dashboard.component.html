@@ -1,0 +1,168 @@
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
+		<ul class="side-menu">
+			<li><a [routerLink]="['/dashboard']" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Gestion des formations</li>
+			<li>
+				<a href=""><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
+					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
+					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
+					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
+                    <li><a [routerLink]="['/formation']">Big Data</a></li>
+                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
+                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
+                    <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
+				</ul>
+			</li>
+			<li class="divider" data-text="table and forms">Gestion des utilisateurs</li>
+			<li>
+				<a href=""><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
+					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
+					
+				</ul>
+			</li>
+		</ul>
+		<div class="ads">
+			<div class="wrapper">
+				<a href="#" class="btn-upgrade">Déconnecter</a>
+				<p>Accès <span>unique</span>à mes services <span>ENSA Tétouan</span></p>
+			</div>
+		</div>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			
+			<form action="#">
+				<div class="form-group">
+					
+				</div>
+			</form>
+			
+			
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="../../images/logo1.png" alt="">
+				
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<h1 class="title">Dashboard</h1>
+			<ul class="breadcrumbs">
+				<li><a href="#">Home</a></li>
+				<li class="divider">/</li>
+				<li><a href="#" class="active">Dashboard</a></li>
+			</ul>
+			<div class="info-data">
+			
+				<div class="card">
+					<div class="head">
+						<div>
+							<h2>234</h2>
+							<p>enseignants</p>
+                            
+						</div>
+						<i class='bx bxs-user icon' ></i>
+					</div>
+					
+					
+				</div>
+				<div class="card">
+					<div class="head">
+						<div>
+							<h2>465</h2>
+							<p>etudiants</p>
+						</div>
+						<i class='bx bxs-user icon' ></i>
+					</div>
+					
+					
+				</div>
+				<div class="card">
+					<div class="head">
+						<div>
+							<h2>8</h2>
+							<p>Formation</p>
+						</div>
+						<i class='bx bxs-graduation icon' ></i>
+					</div>
+					
+					
+				</div>
+			</div>
+      <!-- tableau-->
+			<div class="data">
+				<div class="content-data">
+					<div class="head">
+					
+            <!-- tableau-->
+            <main class="table" id="customers_table">
+              <section class="table__header">
+                  <h1>Liste des enseignants</h1>
+                  <a href="#">Ajouter</a>
+				  <a href="#">Modifier</a>
+                  <div class="input-group">
+                      <input type="search" placeholder="Rechercher...">
+                     
+                  </div>
+                  <div class="export__file">
+                      <label for="export-file" class="export__file-btn" title="Export File"></label>
+                      <input type="checkbox" id="export-file">
+                      <div class="export__file-options">
+                          <label>Export As &nbsp; &#10140;</label>
+                          <label for="export-file" id="toJSON">JSON <img src="../../../images/json.png" alt=""></label>
+                          <label for="export-file" id="toCSV">CSV <img src="../../../images/csv.png" alt=""></label>
+                          <label for="export-file" id="toEXCEL">EXCEL <img src="../../../images/excel.png" alt=""></label>
+                      </div>
+                  </div>
+              </section>
+              <section class="table__body">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Matier <span class="icon-arrow">&UpArrow;</span></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td> 1 </td>
+                              <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Mahmoud</td>
+                              <td> Youssef </td>
+                              <td> m.youssef&#64;uae.ac.ma </td>
+                              <td>
+                                  <p class="status delivered">Statut</p>
+                              </td>
+                              <td> <strong> Resaux </strong></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </section>
+          </main>
+
+						<!-- fin tableau-->
+					</div>
+					
+				</div>
+				
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- NAVBAR -->

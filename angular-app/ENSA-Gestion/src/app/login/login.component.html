@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+
+<div class="background"></div>
+<div class="container">
+    <div class="item">
+        <h2 class="logo"><i class='bx bxl-xing'></i>ENSA Tétouan</h2>
+        <div class="text-item">
+            <h2>Votre Espace <br><span>
+                 Numérique de Travail
+            </span></h2>
+            <p>Accès unique à mes services : une fois votre compte est activé, utilisez votre email institutionnel et votre mot de passe pour vous identifier.</p>
+            <div class="social-icon">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="login-section">
+        <div class="form-box login">
+            <form action="">
+                <h2>Authentification
+                </h2>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" required>
+                    <label >Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
+                    <input type="password" required>
+                    <label>Mot de passe</label>
+                </div>
+                <div class="input-box">
+                      <select required>
+                        <option value="" disabled selected>Je suis :</option>
+                        <option value="etudiant">Étudiant</option>
+                        <option value="enseignant">Enseignant</option>
+                      </select>
+                </div>
+                <div class="remember-password">
+                    <label for=""><input type="checkbox">Remember Me</label>
+                    <a href="#">Forget Password</a>
+                </div>
+                <button  (click)="login()" class="btn">S'autentifier</button>
+            </form>
+           
+        </div>
+    </div>
+</div>
+<div class="counter-wrapper">
+    <div class="counter">
+        <h1 class="count" data-target="8"data-speed="5">0</h1>
+        <p>Filières</p>
+    </div>
+    <div class="counter">
+        <h1 class="count" data-target="1405"data-speed="100">0</h1>
+        <p>Etudiants</p>
+    </div>
+    <div class="counter">
+        <h1 class="count" data-target="105"data-speed="100">0</h1>
+        <p>Enseignants</p>
+    </div>
+    <div class="counter">
+        <h1 class="count" data-target="609"data-speed="100">0</h1>
+        <p>stage pfe</p>
+    </div>
+</div>
+
+
+
+
+<app-footer></app-footer>

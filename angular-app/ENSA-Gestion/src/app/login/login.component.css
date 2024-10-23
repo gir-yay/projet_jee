@@ -1,0 +1,448 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins",sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background: #000;
+  
+}
+.background{
+    background: url(../../images/ensa.png) no-repeat;
+    background-position: center;
+    background-size:cover ;
+    height: 100vh;
+    width: 100%;
+    filter: blur(10px);
+}
+
+.header{
+   /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 13%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;*/
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+   /* height: calc(5rem + 1rem);*/
+    height: 60px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s ease;
+    transition-property: height,background;
+
+}
+
+.header.sticky{
+    /* height: calc(2.5rem + 1rem);*/
+     height: 60px;
+     background: rgba(255,255,255,0.1);
+     backdrop-filter: blur(20px);
+     border-bottom: 1px solide rgba(255,255,255,0.1);
+ }
+.navbar a{
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    margin-right: 30px;
+    text-decoration: none;
+}
+.navbar a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    border-radius: 5px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: .5s ease;
+}
+.navbar a:hover:after{
+    transform: translateY(0);
+    opacity: 1;
+}
+.search-bar{
+    width: 250px;
+    height: 45px;
+    background-color: transparent;
+   
+    display: flex;
+    align-items: center;
+}
+.search-bar input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+.search-bar button{
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.search-bar input::placeholder{
+    color: #fff;
+}
+.search-bar button i{
+    font-size: 22px;
+}
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 75%;
+    height: 550px;
+    margin-top: 20px;
+   /* background: url(../../images/ensa.png) no-repeat;*/
+    background-position: center;
+    background-size:cover ;
+    border-radius: 20px;
+    overflow: hidden;
+    
+    
+}
+.item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    color: #fff;
+    background: transparent;
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+
+
+}
+.item .logo{
+    color: #fff;
+    font-size: 30px;
+
+}
+.text-item h2{
+    font-size: 40px;
+    line-height: 1;
+}
+.text-item p{
+    font-size: 16px;
+    margin: 20px 0;
+}
+.social-icon a i{
+    color: #fff;
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+.social-icon a:hover i{
+    transform: scale(1.2);
+}
+.container .login-section{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 58%);
+    height: 100%;
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.login-section .form-box{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.login-section .form-box.register{
+    transform: translateX(430px);
+    transition: transform .6s ease;
+    transition-delay: 0s;
+}
+.login-section.active .form-box.register{
+    transform: translateX(0px);
+    transition-delay: .7s;
+}
+
+.login-section .form-box.login{
+    transform: translateX(0px);
+    transition: transform .6s ease;
+    transition-delay: 0.7s;
+}
+.login-section.active .form-box.login{
+    transform: translateX(430px);
+    transition-delay: 0s;
+}
+
+
+
+.login-section .form-box h2{
+    text-align: center;
+    font-size: 25px;
+}
+
+.form-box .input-box{
+    width: 340px;
+    height: 50px;
+    border-bottom: 2px solid#fff;
+    margin: 30px 0;
+    position: relative;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-right: 28px;
+    color: #1e21b3;
+
+
+}
+/*  select*/
+.input-box select{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-right: 28px;
+    color: #1e21b3;
+
+
+}
+.input-box label{
+    position: absolute;
+    /*top: 50%;*/
+    top: -5px;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 600px;
+    pointer-events: none;
+    transition: .5s ease;
+
+}
+.input-box .icon{
+    position: absolute;
+    top: 13px;
+    right: 0;
+    font-size: 19px;
+}
+.input-box input:focus~ label,
+.input-box input:valid~ label{
+    top: -5px;
+}
+.remember-password{
+    font-size: 14px;
+    font-weight: 500;
+    margin: -15px 0 15px ;
+    display: flex;
+    justify-content: space-between;
+}
+.remember-password label input{
+    accent-color: #fff;
+    margin-right: 3px;
+
+}
+.remember-password a{
+    color: #fff;
+    text-decoration: none;
+}
+.remember-password a:hover{
+    text-decoration: underline;
+}
+.btn{
+    background: #fff;
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+   
+    background: #1e21b3;
+    font-size: 16px;
+    color: #fff;
+    box-shadow: rgba(0,0,0,0.4);
+
+}
+.create-account{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 25px;
+}
+.create-account p a{
+    color: #fff;
+    font-weight: 600px;
+    text-decoration: none;
+}
+.create-account p a:hover{
+    text-decoration: underline;
+}
+/* =============Counter up================ */
+
+.counter-wrapper{
+    background: url(../../images/counter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1.5rem;
+    padding: 10rem 9%;
+    position: relative;
+}
+.counter-wrapper::before{
+    position: absolute;
+    content: '';
+    content: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+}
+.counter{
+   text-align: center;   
+   color: #ddd;
+   z-index: 2;
+   position: relative;
+}
+.counter::before{
+    position: absolute;
+    content: '';
+    bottom: -2rem;
+    left: 50%;
+    width: 20%;
+    height: .2rem;
+    background: #0b0243;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+.counter .count{
+    font-size: 5rem;
+    margin-bottom: 1rem;    
+}
+.counter p{
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+/* Media Queries pour rendre le design responsive */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px 5%; /* Réduire le padding pour les écrans plus petits */
+    }
+
+    .item {
+        padding: 50px; /* Réduire le padding à l'intérieur de l'élément */
+    }
+
+    .text-item h2 {
+        font-size: 35px; /* Réduire la taille de la police pour les écrans plus petits */
+    }
+
+    .text-item p {
+        font-size: 14px; /* Réduire la taille du texte */
+    }
+
+    .search-bar {
+        width: 100%; /* Faire la barre de recherche plus large */
+        max-width: 200px; /* Limiter la largeur maximale */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Utiliser 90% de la largeur de l'écran */
+    }
+
+    .item {
+        width: 100%; /* Remplir l'écran pour les petits appareils */
+    }
+
+    .login-section {
+        width: 100%; /* Faire la section de connexion pleine largeur */
+    }
+
+    .login-section .form-box {
+        width: 100%; /* Faire le formulaire plein écran */
+    }
+
+    .form-box .input-box {
+        width: 90%; /* Ajuster la largeur des champs de saisie */
+    }
+
+    .btn {
+        height: 40px; /* Ajuster la hauteur du bouton */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 5%; /* Réduire encore le padding de l'en-tête */
+    }
+
+    .text-item h2 {
+        font-size: 28px; /* Réduire la taille de la police pour les très petits écrans */
+    }
+
+    .text-item p {
+        font-size: 12px; /* Réduire la taille du texte pour les petits écrans */
+    }
+
+    .social-icon a i {
+        font-size: 20px; /* Réduire la taille des icônes sociales */
+    }
+
+    .search-bar {
+        max-width: 150px; /* Limiter la largeur de la barre de recherche sur les petits écrans */
+    }
+
+    .btn {
+        font-size: 14px; /* Réduire la taille de la police du bouton */
+    }
+}

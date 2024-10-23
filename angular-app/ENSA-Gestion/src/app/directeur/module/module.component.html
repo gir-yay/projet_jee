@@ -1,0 +1,148 @@
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
+		<ul class="side-menu">
+			<li><a [routerLink]="['/dashboard']" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Gestion des formations</li>
+			<li>
+				<a href="#" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
+					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
+					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
+					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
+                    <li><a [routerLink]="['/formation']">Big Data</a></li>
+                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
+                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
+                    <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
+				</ul>
+			</li>
+			<li class="divider" data-text="table and forms">Gestion des utilisateurs</li>
+			<li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
+					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
+					
+				</ul>
+			</li>
+		</ul>
+		<div class="ads">
+			<div class="wrapper">
+				<a href="#" class="btn-upgrade">Déconnecter</a>
+				<p>Accès <span>unique</span>à mes services <span>ENSA Tétouan</span></p>
+			</div>
+		</div>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			
+			<form action="#">
+				<div class="form-group">
+					
+				</div>
+			</form>
+			
+			
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="../../images/logo1.png" alt="">
+				
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<h1 class="title">Dashboard</h1>
+			<ul class="breadcrumbs">
+				<li><a href="#">Home</a></li>
+				<li class="divider">/ Formations /</li>
+				<li><a href="#" class="active">Nom de la formation</a></li>
+			</ul>
+			<div class="info-data">
+			
+				
+				
+				
+			</div>
+      <!-- tableau-->
+			<div class="data">
+				<div class="content-data">
+					<a [routerLink]="['/ajouter-matiere']">ajouter une matiére</a>
+					<div class="head">
+					
+            <!--  pour afficher detail slider de la formation-->
+            <div class="container">
+				<h1>Nom de la matiere</h1>
+				<div id="moduleCarousel" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 1</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 2</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 3</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 4</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 5</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 6</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 7</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+								<div class="module col" [routerLink]="['/detail-module']">
+									<h1>Analyse 8</h1>
+									<p>Module s3ib bzf</p>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+					<button class="carousel-control-prev" type="button" data-bs-target="#moduleCarousel" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#moduleCarousel" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+			
+			
+						<!-- fin de -->
+					</div>
+					
+				</div>
+				
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- NAVBAR -->

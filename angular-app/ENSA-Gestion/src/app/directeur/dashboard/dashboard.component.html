@@ -4,7 +4,7 @@
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
 			<li><a [routerLink]="['/dashboard']" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="main">Gestion des formations</li>
+			<li class="divider" data-text="Gestion des formations">Gestion des formations</li>
 			<li>
 				<a href=""><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
@@ -18,12 +18,13 @@
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>
-			<li class="divider" data-text="table and forms">Gestion des utilisateurs</li>
+			<li class="divider" data-text="Gestion des utilisateurs">Gestion des utilisateurs</li>
 			<li>
 				<a href=""><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
 					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
 					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
+					<li><a [routerLink]="['/List-directeurs']">Directeurs</a></li>
 					
 				</ul>
 			</li>
@@ -102,6 +103,32 @@
 					
 				</div>
 			</div>
+			<!-- popup-->
+
+<!-- Structure de la popup avec style personnalisé -->
+<div *ngIf="isPopupOpen" class="modal fade show" tabindex="-1" style="background: rgba(0, 0, 0, 0.7);">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content shadow-lg border-0 rounded-4 popup-custom">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Ajouter un fichier</h5>
+        <!-- Bouton de fermeture -->
+        <button type="button" class="btn-close text-white" aria-label="Close" (click)="closePopup()">x</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="fileInput" class="form-label">Sélectionnez un fichier</label>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closePopup()">Fermer</button>
+        <button type="button" class="btn btn-primary" (click)="onUpload()">Upload</button>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- tableau-->
 			<div class="data">
 				<div class="content-data">
@@ -111,8 +138,7 @@
             <main class="table" id="customers_table">
               <section class="table__header">
                   <h1>Liste des enseignants</h1>
-                  <a href="#">Ajouter</a>
-				  <a href="#">Modifier</a>
+				  <button class="btn btn-primary" (click)="openPopup()">Mis à jour</button>
                   <div class="input-group">
                       <input type="search" placeholder="Rechercher...">
                      

@@ -759,3 +759,74 @@ thead th.active,tbody td.active {
 		display: none;
 	}
 }
+
+/* Style pour le fond semi-transparent */
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+  }
+  .modal-body{
+	margin: 30px;
+  }
+  /* Style pour la boite modale */
+  .popup-custom {
+	max-width: 500px;
+	border-radius: 8px;
+	background: #f9f9f9;
+  }
+  
+  /* Styles pour l'en-tête de la popup */
+  .modal-header {
+	background-color:#0e4894;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+  }
+  
+  .modal-header h5 {
+	font-weight: bold;
+	padding: 5px;
+	
+  }
+  .modal-header .bg-primary{
+	background-color: #0e4894;
+  }
+  .btn-close {
+	background: transparent;
+	color: rgb(10, 1, 1);
+	opacity: 1;
+	margin-left: 250px;
+	margin-bottom: 5px;
+  }
+ .text-white{
+	padding-top: 0;
+
+  }
+  
+  /* Effet d'ombre et d'arrondi */
+  .modal-content {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+  }
+  
+  /* Animation d'apparition pour la popup */
+  .fade.show {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Styles pour le bouton */
+  .btn-primary {
+	margin: 10px;
+	background-color: #0e4894;
+	border: none;
+	padding: 5px;
+  }
+  .btn-secondary{
+	margin: 10px;
+	background-color: #585c62;
+	border: none;
+	padding: 5px;
+  }

@@ -4,19 +4,27 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-
+import { AuthServiceService } from '../services/auth-service.service';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent], 
+  imports: [HeaderComponent,FooterComponent, FormsModule,HttpClientModule], 
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements AfterViewInit {
+  email: string = '';
+  password: string = '';
+  userType: string = '';
   
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router,
+    private authService: AuthServiceService // Injection du service
+  ) {}
   // js pour le counter
-
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.startCounters(); 
@@ -48,14 +56,26 @@ export class LoginComponent implements AfterViewInit {
       });
     }
   }
-
   login() {
-    // Logique de validation de connexion ici
-    const validLogin = true; // Remplace par ta logique réelle
-
-    if (validLogin) {
-      // Rediriger vers le dashboard après validation
-      this.router.navigate(['/dashboard']);
-    }
+    this.authService.login(this.email, this.password, this.userType).subscribe(
+      (response) => {
+        console.log(response)
+        if (response.status === 'success') {
+          // Redirect based on user type
+          if (this.userType === 'etudiant') {
+            this.router.navigate(['/etudiant-dashboard']); // Adjust route as necessary
+          } else if (this.userType === 'enseignant') {
+            this.router.navigate(['/enseignant-dashboard']); // Adjust route as necessary
+          } 
+        } else {
+          // Handle login error (show message to user)
+          alert('Login failed: ' + response.message);
+        }
+      },
+      (error) => {
+        // Handle error (e.g., show alert)
+        alert('An error occurred: ' + error.message);
+      }
+    );
   }
 }

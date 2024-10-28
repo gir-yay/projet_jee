@@ -3,30 +3,11 @@
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Gestion des utilisateurs">Gestion des formations</li>
-			<li>
-				<a href="#" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
-					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
-					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
-					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
-                    <li><a [routerLink]="['/formation']">Big Data</a></li>
-                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
-                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
-                    <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
-				</ul>
-			</li>
-			<li class="divider" data-text="Gestion des utilisateurs">Gestion des utilisateurs</li>
-			<li>
-				<a href="#"><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
-					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
-					
-				</ul>
-			</li>
+			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="Bonjour Cher Professeur !">Bonjour Cher Professeur !</li>
+			
+			<li class="divider" data-text="Nom Prenom">Nom Prenom </li>
+			
 		</ul>
 		<div class="ads">
 			<div class="wrapper">
@@ -62,8 +43,8 @@
 			<h1 class="title">Dashboard</h1>
 			<ul class="breadcrumbs">
 				<li><a href="#">Home</a></li>
-				<li class="divider">/ Formations /</li>
-				<li><a href="#" class="active">Nom de la formation</a></li>
+				<li class="divider">/</li>
+				<li><a href="#" class="active">Matiers</a></li>
 			</ul>
 			<div class="info-data">
 			
@@ -74,29 +55,28 @@
       <!-- tableau-->
 			<div class="data">
 				<div class="content-data">
-					<a [routerLink]="['/ajouter-matiere']">ajouter une matiére</a>
 					<div class="head">
 					
             <!--  pour afficher detail slider de la formation-->
             <div class="container">
-				<h1>Nom de la matiere</h1>
+				<h1>Mes Matiers</h1>
 				<div id="moduleCarousel" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="row">
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 1</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 2</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 3</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 4</h1>
 									<p>Module s3ib bzf</p>
 								</div>
@@ -104,19 +84,19 @@
 						</div>
 						<div class="carousel-item">
 							<div class="row">
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 5</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 6</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 7</h1>
 									<p>Module s3ib bzf</p>
 								</div>
-								<div class="module col" [routerLink]="['/detail-module']">
+								<div class="module col" [routerLink]="['/enseignant-Cours']">
 									<h1>Analyse 8</h1>
 									<p>Module s3ib bzf</p>
 								</div>

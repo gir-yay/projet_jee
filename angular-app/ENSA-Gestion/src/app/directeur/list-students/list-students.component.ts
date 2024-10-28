@@ -1,14 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-list-students',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './list-students.component.html',
   styleUrl: './list-students.component.css'
 })
 export class ListStudentsComponent   implements OnInit {
+  isPopupOpen = false;
+  selectedFile: File | null = null;
+
+  openPopup(): void {
+    this.isPopupOpen = true;
+  }
+
+  closePopup(): void {
+    this.isPopupOpen = false;
+  }
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload(): void {
+    if (this.selectedFile) {
+      console.log(this.selectedFile);
+    }
+    this.closePopup(); // Ferme la popup après l'upload
+  }
+
 
   constructor() { }
 

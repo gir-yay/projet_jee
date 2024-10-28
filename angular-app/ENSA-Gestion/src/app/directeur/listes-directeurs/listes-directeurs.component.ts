@@ -1,16 +1,17 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 
+
+
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-listes-directeurs',
   standalone: true,
-  imports: [RouterModule,CommonModule],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  imports: [RouterModule, CommonModule],
+  templateUrl: './listes-directeurs.component.html',
+  styleUrl: './listes-directeurs.component.css'
 })
-export class DashboardComponent implements OnInit { isPopupOpen = false;
+export class ListesDirecteursComponent implements OnInit {isPopupOpen = false;
   selectedFile: File | null = null;
 
   openPopup(): void {

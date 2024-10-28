@@ -21,21 +21,21 @@
     </div>
     <div class="login-section">
         <div class="form-box login">
-            <form action="">
+            <form (ngSubmit)="login()">
                 <h2>Authentification
                 </h2>
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-envelope'></i></span>
-                    <input type="email" required>
+                    <input type="email"  [(ngModel)]="email" name="email"required>
                     <label >Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
-                    <input type="password" required>
+                    <input type="password"  [(ngModel)]="password" name="password"required>
                     <label>Mot de passe</label>
                 </div>
                 <div class="input-box">
-                      <select required>
+                      <select  [(ngModel)]="userType" name="userType" required>
                         <option value="" disabled selected>Je suis :</option>
                         <option value="etudiant">Étudiant</option>
                         <option value="enseignant">Enseignant</option>
@@ -45,7 +45,7 @@
                     <label for=""><input type="checkbox">Remember Me</label>
                     <a href="#">Forget Password</a>
                 </div>
-                <button  (click)="login()" class="btn">S'autentifier</button>
+                <button  type="submit" class="btn">S'autentifier</button>
             </form>
            
         </div>

@@ -1,30 +1,23 @@
-# Use the official Node.js image as a parent image
-FROM node:14 AS build
+# Use a Node.js version that is compatible with Angular CLI
+FROM node:20
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install Angular CLI and dependencies
+# Install Angular CLI globally
 RUN npm install -g @angular/cli
+
+# Install the application dependencies
 RUN npm install
 
-# Copy the rest of the application files
+# Copy the rest of your application files
 COPY . .
 
-# Build the Angular app
-RUN ng build --prod
+# Expose the port your app runs on
+EXPOSE 4200
 
-# Use Nginx to serve the app
-FROM nginx:alpine
-
-# Copy built files from the build stage to Nginx's HTML directory
-COPY --from=build /app/dist/ensa-gestion /usr/share/nginx/html
-
-# Expose the port
-EXPOSE 80
-
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Angular application
+CMD ["ng", "serve", "--host", "0.0.0.0"]

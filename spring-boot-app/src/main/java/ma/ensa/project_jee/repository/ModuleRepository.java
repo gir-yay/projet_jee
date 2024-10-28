@@ -7,4 +7,6 @@ import java.util.List;
 public interface ModuleRepository  extends JpaRepository<Module, Integer>{
 
     List<Module> findByFormationIdAndNumSemestre(int formationId, int numSemestre);
+    List<Module> findByFormationId(int formationId);
+
 }

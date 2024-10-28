@@ -45,6 +45,12 @@ public class ModuleService {
         return module.stream().map(e -> moduleMapper.toModuleDto(e)).collect(Collectors.toList());
     }
 
+    public List<ModuleDto> getModulesByFormationId(int formationId) {
+        List<Module> module = moduleRepository.findByFormationId(formationId);
+        return module.stream().map(e -> moduleMapper.toModuleDto(e)).collect(Collectors.toList());
+    }
+
+
     public String ajouterModule(ModuleDto moduleDto) {
 
         Formation formation = formationRepository.findById(moduleDto.getFormationId()).orElse(null);

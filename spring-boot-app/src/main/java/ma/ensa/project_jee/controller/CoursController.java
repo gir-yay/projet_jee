@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import ma.ensa.project_jee.dto.CoursDto;
+import ma.ensa.project_jee.dto.DocumentsCoursDto;
+import ma.ensa.project_jee.dto.LiensCoursDto;
 import ma.ensa.project_jee.service.CoursService;
+import ma.ensa.project_jee.service.DocumentsCoursService;
+import ma.ensa.project_jee.service.LiensCoursService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +29,8 @@ import java.util.stream.Collectors;
 public class CoursController {
     
     private final CoursService coursService;
+    private final LiensCoursService liensCoursService;
+    private final DocumentsCoursService documentsCoursService;
 
     @GetMapping("")
     public List<CoursDto> getAll(){
@@ -85,4 +91,15 @@ public class CoursController {
     public void supprimer(@PathVariable int id){
         coursService.supprimerCours(id);
     }
+
+    @GetMapping("/{id}/liens")
+    public List<LiensCoursDto> getLiensCours(@PathVariable int id){
+        return liensCoursService.getLiensCoursByCoursId(id);
+    }
+
+    @GetMapping("/{id}/documents")
+    public List<DocumentsCoursDto> getDocumentsCours(@PathVariable int id){
+        return documentsCoursService.getDocumentsByCoursId(id);
+    }
+
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import ma.ensa.project_jee.dto.MatiereDto;
 import ma.ensa.project_jee.dto.ModuleDto;
+import ma.ensa.project_jee.service.MatiereService;
 import ma.ensa.project_jee.service.ModuleService;
 
 import java.util.HashMap;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 public class ModuleController {
     
     private final ModuleService moduleService;
+    private final MatiereService matiereService;
 
     @GetMapping("")
     public List<ModuleDto> getAll(){
@@ -84,5 +87,10 @@ public class ModuleController {
     @DeleteMapping("/{id}")
     public void supprimer(@PathVariable int id){
         moduleService.supprimerModule(id);
+    }
+
+    @GetMapping("/{id}/matieres")
+    public List<MatiereDto> getMatieres(@PathVariable int id){
+        return matiereService.getMatieresByModuleId(id);
     }
 }

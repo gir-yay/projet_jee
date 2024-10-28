@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import ma.ensa.project_jee.dto.FormationDto;
+import ma.ensa.project_jee.dto.ModuleDto;
 import ma.ensa.project_jee.service.FormationService;
+import ma.ensa.project_jee.service.ModuleService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 public class FormationController {
     
     private final FormationService formationService;
+    private final ModuleService moduleService;
 
     @GetMapping("")
     public List<FormationDto> getAll(){
@@ -84,5 +87,10 @@ public class FormationController {
     @DeleteMapping("/{id}")
     public void supprimer(@PathVariable int id){
         formationService.supprimerFormation(id);
+    }
+
+    @GetMapping("/{id}/modules")
+    public List<ModuleDto> getModules(@PathVariable int id){
+        return moduleService.getModulesByFormationId(id);
     }
 }

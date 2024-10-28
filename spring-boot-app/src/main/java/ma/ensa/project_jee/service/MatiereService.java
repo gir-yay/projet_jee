@@ -35,6 +35,16 @@ public class MatiereService {
         return matiereDtos;
     }
 
+
+    public List<MatiereDto> getMatieresByEnseignant(int id) {
+        List<Matiere> matieres = matiereRepository.findByEnseignantId(id);
+        List<MatiereDto> matiereDtos = new ArrayList<>();
+        matiereDtos = matieres.stream().map(e -> matiereMapper.toMatiereDto(e))
+                .collect(Collectors.toList());
+
+        return matiereDtos;
+    }
+
     public MatiereDto getMatiere(int id) {
         Optional<Matiere> matiereExists = matiereRepository.findById(id);
         if (!matiereExists.isPresent()) {

@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /app
 
 # Copy the package.json and package-lock.json from ensa-gestion to the working directory
-COPY ensa-gestion/package.json ensa-gestion/package-lock.json ./
+COPY ENSA-Gestion/package.json ENSA-Gestion/package-lock.json ./
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
@@ -14,7 +14,7 @@ RUN npm install -g @angular/cli
 RUN npm install
 
 # Copy the rest of your application files from ensa-gestion
-COPY ensa-gestion/ .
+COPY ENSA-Gestion/ .
 
 # Expose the port your app runs on
 EXPOSE 4200

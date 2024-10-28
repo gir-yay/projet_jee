@@ -12,10 +12,18 @@ services:
     image: ghizlanera/spring-boot-app:latest
     container_name: spring-container
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db  # Use the mysql service name
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db  
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: secret
     ports:
       - "8080:8080"
     depends_on:
       - mysql
+
+  angular_app:
+    image: ghizlanera/angular-app:latest 
+    container_name: angular-container
+    ports:
+      - "4200:4200" 
+    depends_on:
+      - spring_app

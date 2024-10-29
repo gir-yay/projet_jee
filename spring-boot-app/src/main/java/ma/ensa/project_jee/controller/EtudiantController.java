@@ -18,11 +18,9 @@ import ma.ensa.project_jee.dto.LiensCoursDto;
 import ma.ensa.project_jee.dto.MatiereDto;
 import ma.ensa.project_jee.dto.ModuleDto;
 import ma.ensa.project_jee.model.Etudiant;
-import ma.ensa.project_jee.model.Formation;
 import ma.ensa.project_jee.model.NoteResponse;
 import ma.ensa.project_jee.model.Utilisateur;
 import ma.ensa.project_jee.repository.EtudiantRepository;
-import ma.ensa.project_jee.repository.FormationRepository;
 import ma.ensa.project_jee.service.CoursService;
 import ma.ensa.project_jee.service.DocumentsCoursService;
 import ma.ensa.project_jee.service.LiensCoursService;
@@ -44,7 +42,6 @@ public class EtudiantController {
     private final LiensCoursService liensCoursService;
     private final NoteEtudiantService noteService;
     private final EtudiantRepository etudiantRepository;
-    private final FormationRepository formationRepository;
 
     private Etudiant getCurrentEtudiant() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

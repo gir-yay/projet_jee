@@ -1,18 +1,13 @@
 package ma.ensa.project_jee.service;
 
-import org.apache.poi.sl.draw.geom.GuideIf.Op;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import ma.ensa.project_jee.dto.LiensCoursDto;
 import ma.ensa.project_jee.mapper.LiensCoursMapper;
 import ma.ensa.project_jee.model.Cours;
 import ma.ensa.project_jee.model.Utilisateur;
-import ma.ensa.project_jee.model.Enseignant;
 import ma.ensa.project_jee.model.LiensCours;
 import ma.ensa.project_jee.repository.CoursRepository;
 import ma.ensa.project_jee.repository.LiensCoursRepository;

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { ModuleService } from '../services/module.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  imports: [CommonModule, RouterModule] ,
+    templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
+  
 })
 export class DashboardComponent  implements OnInit {
   modules: any[] = []; // Changez 'notes' en 'modules'
@@ -24,7 +26,6 @@ export class DashboardComponent  implements OnInit {
       }
     );
   }
-  
 
   isDropdownOpen = false;
   isCoursesDropdownOpen = false;

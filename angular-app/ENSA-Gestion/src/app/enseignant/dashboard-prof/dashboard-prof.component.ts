@@ -1,5 +1,5 @@
 import { Component ,  OnInit  } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 import { MatiereEnseignantService} from '../../services/enseignant/matiere-enseignant.service';
 
 import { CommonModule } from '@angular/common'; // Ajoutez cette ligne
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common'; // Ajoutez cette ligne
   styleUrl: './dashboard-prof.component.css'
 })
 
-export class DashboardProfComponent implements OnInit  { 
+export class DashboardProfComponent implements OnInit  {
   matieres: any[] = []; // Utilisez le type approprié ici
 
   constructor(private matiereService: MatiereEnseignantService) {} // Ajout d'une parenthèse fermante

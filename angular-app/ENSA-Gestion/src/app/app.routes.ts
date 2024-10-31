@@ -15,7 +15,7 @@ import { DashboardProfComponent } from './enseignant/dashboard-prof/dashboard-pr
 import { CoursComponent } from './enseignant/cours/cours.component';
 import { DetailCoursComponent } from './enseignant/detail-cours/detail-cours.component';
 import { DocumentsCourComponent } from './enseignant/documents-cour/documents-cour.component';
-import { LienssCourComponent } from './lienss-cour/lienss-cour.component';
+import { LienssCourComponent } from './enseignant/lienss-cour/lienss-cour.component';
 import { AddCoursComponent } from './enseignant/add-cours/add-cours.component';
 
 

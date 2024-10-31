@@ -448,7 +448,7 @@ main .content-data .head h3 {
    width: auto !important;
   }
  }
- 
+
 main.table {
   width: 82vw;
   height: 90vh;
@@ -532,7 +532,7 @@ main.table {
   visibility: hidden;
 }
 
-.table__body:hover::-webkit-scrollbar-thumb{ 
+.table__body:hover::-webkit-scrollbar-thumb{
   visibility: visible;
 }
 
@@ -639,10 +639,10 @@ thead th span.icon-arrow {
   height: 1.3rem;
   border-radius: 50%;
   border: 1.4px solid transparent;
-  
+
   text-align: center;
   font-size: 1rem;
-  
+
   margin-left: .5rem;
   transition: .2s ease-in-out;
 }
@@ -681,7 +681,7 @@ thead th.active,tbody td.active {
   transition: .2s ease-in-out;
 }
 
-.export__file .export__file-btn:hover { 
+.export__file .export__file-btn:hover {
   background-color: #fff;
   transform: scale(1.15);
   cursor: pointer;
@@ -694,7 +694,7 @@ thead th.active,tbody td.active {
 .export__file .export__file-options {
   position: absolute;
   right: 0;
-  
+
   width: 12rem;
   border-radius: .5rem;
   overflow: hidden;
@@ -703,9 +703,9 @@ thead th.active,tbody td.active {
   opacity: 0;
   transform: scale(.8);
   transform-origin: top right;
-  
+
   box-shadow: 0 .2rem .5rem #0004;
-  
+
   transition: .2s;
 }
 
@@ -720,7 +720,7 @@ thead th.active,tbody td.active {
   width: 100%;
   padding: .6rem 0;
   background-color: #f2f2f2;
-  
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -777,7 +777,7 @@ thead th.active,tbody td.active {
 	border-radius: 8px;
 	background: #f9f9f9;
   }
-  
+
   /* Styles pour l'en-tête de la popup */
   .modal-header {
 	background-color:#0e4894;
@@ -785,11 +785,11 @@ thead th.active,tbody td.active {
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
   }
-  
+
   .modal-header h5 {
 	font-weight: bold;
 	padding: 5px;
-	
+
   }
   .modal-header .bg-primary{
 	background-color: #0e4894;
@@ -805,19 +805,19 @@ thead th.active,tbody td.active {
 	padding-top: 0;
 
   }
-  
+
   /* Effet d'ombre et d'arrondi */
   .modal-content {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	border-radius: 8px;
   }
-  
+
   /* Animation d'apparition pour la popup */
   .fade.show {
 	opacity: 1;
 	transition: opacity 0.3s ease-in-out;
   }
-  
+
   /* Styles pour le bouton */
   .btn-primary {
 	margin: 10px;

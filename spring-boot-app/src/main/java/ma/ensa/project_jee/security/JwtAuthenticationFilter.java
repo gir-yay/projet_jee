@@ -26,6 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     
   private final JWTService jwtService;
   private final UserDetailsService userDetailsService;
+  private HttpServletRequest request;
 
 
   @Override
@@ -47,8 +48,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
     jwt = authHeader.substring(7);
     userEmail = jwtService.extractUsername(jwt);
+    String role = jwtService.extractRole(jwt);
+    request.getSession().setAttribute("userType", role);
+
     // This block will be accessible the first time the user logs in
     if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      System.out.println("\n\n\nUser email: " + userEmail + "\n\n\n");
       UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
       if (jwtService.isTokenValid(jwt, userDetails)) {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

@@ -15,13 +15,15 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import ma.ensa.project_jee.model.Utilisateur;
 
 import java.util.Map;
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
+
 @Service
 public class JWTService {
     
@@ -29,6 +31,7 @@ public class JWTService {
   private String secretKey;
   @Value("${application.security.jwt.expiration}")
   private long jwtExpiration;
+  private final HttpServletRequest request;
 
 
   public String extractUsername(String token) {
@@ -53,9 +56,13 @@ public class JWTService {
     Utilisateur user = (Utilisateur) userDetails;
     extraClaims.put("nom", user.getNom());
     extraClaims.put("prenom", user.getPrenom());
+    extraClaims.put("role", request.getSession().getAttribute("userType"));
     return buildToken(extraClaims, userDetails, jwtExpiration);
   }
 
+  public String extractRole(String token) {
+    return (String) extractAllClaims(token).get("role");
+  }
  
 
   private String buildToken(

@@ -7,10 +7,11 @@ import { FooterComponent } from '../footer/footer.component';
 import { AuthServiceService } from '../services/auth-service.service';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent, FormsModule,HttpClientModule], 
+  imports: [HeaderComponent,FooterComponent, FormsModule,HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -18,7 +19,7 @@ export class LoginComponent implements AfterViewInit {
   email: string = '';
   password: string = '';
   userType: string = '';
-  
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
@@ -27,7 +28,7 @@ export class LoginComponent implements AfterViewInit {
   // js pour le counter
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.startCounters(); 
+      this.startCounters();
     }
   }
 
@@ -60,13 +61,15 @@ export class LoginComponent implements AfterViewInit {
     this.authService.login(this.email, this.password, this.userType).subscribe(
       (response) => {
         console.log(response)
+
         if (response.status === 'success') {
+          localStorage.setItem('token', response.access_token); // Store the access token
           // Redirect based on user type
           if (this.userType === 'etudiant') {
             this.router.navigate(['/etudiant/dashboard']); // Adjust route as necessary
           } else if (this.userType === 'enseignant') {
             this.router.navigate(['/enseignant-dashboard']); // Adjust route as necessary
-          } 
+          }
         } else {
           // Handle login error (show message to user)
           alert('Login failed: ' + response.message);

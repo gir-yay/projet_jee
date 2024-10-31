@@ -16,4 +16,5 @@ export class AuthServiceService {
     const credentials = { email, password, userType };
     return this.http.post(this.apiUrl, credentials);
   }
+  
 }

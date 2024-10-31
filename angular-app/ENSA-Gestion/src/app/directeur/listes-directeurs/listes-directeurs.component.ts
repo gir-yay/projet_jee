@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit , ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listes-directeurs.component.html',
   styleUrl: './listes-directeurs.component.css'
 })
-export class ListesDirecteursComponent implements OnInit {isPopupOpen = false;
+export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
+  isPopupOpen = false;
   selectedFile: File | null = null;
 
   openPopup(): void {
@@ -34,20 +35,54 @@ export class ListesDirecteursComponent implements OnInit {isPopupOpen = false;
   }
 
 
-  constructor() { }
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit(): void {
-    // SIDEBAR DROPDOWN LOGIC
-   
-
-    this.loadScript('../../../assets/js/table.js');
-    this.loadScript('../../../assets/js/sidebar.js');
-
+  ngAfterViewInit(): void {
+    this.initializeSidebarDropdown();
   }
-  loadScript(src: string): void {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
+
+//script pour la table
+ngOnInit(): void {
+  this.loadScript('../../../assets/js/table.js');
+}
+loadScript(src: string): void {
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  document.body.appendChild(script);
+}
+
+
+private initializeSidebarDropdown(): void {
+  const dropdowns = this.el.nativeElement.querySelectorAll('#sidebar .side-dropdown');
+
+  dropdowns.forEach((dropdown: HTMLElement) => {
+    const link = dropdown.parentElement?.querySelector('a:first-child');
+    if (link) {
+      this.renderer.listen(link, 'click', (event: Event) => {
+        event.preventDefault();
+        this.toggleDropdown(link, dropdown, dropdowns);
+      });
+    }
+  });
+}
+
+private toggleDropdown(link: Element, dropdown: HTMLElement, dropdowns: NodeListOf<HTMLElement>): void {
+  const isActive = link.classList.contains('active');
+  this.resetAllDropdowns(dropdowns);
+  if (!isActive) {
+    this.renderer.addClass(link, 'active');
+    this.renderer.addClass(dropdown, 'show');
   }
+}
+
+private resetAllDropdowns(dropdowns: NodeListOf<HTMLElement>): void {
+  dropdowns.forEach((dropdown: HTMLElement) => {
+    const link = dropdown.parentElement?.querySelector('a:first-child');
+    if (link) {
+      this.renderer.removeClass(link, 'active');
+    }
+    this.renderer.removeClass(dropdown, 'show');
+  });
+}
 }

@@ -13,6 +13,9 @@ import { ListStudentsComponent } from './directeur/list-students/list-students.c
 import { AddFormationComponent } from './directeur/add-formation/add-formation.component';
 import { DashboardProfComponent } from './enseignant/dashboard-prof/dashboard-prof.component';
 import { CoursComponent } from './enseignant/cours/cours.component';
+import { DetailCoursComponent } from './enseignant/detail-cours/detail-cours.component';
+import { DocumentsCourComponent } from './enseignant/documents-cour/documents-cour.component';
+import { LienssCourComponent } from './lienss-cour/lienss-cour.component';
 import { AddCoursComponent } from './enseignant/add-cours/add-cours.component';
 
 export const routes: Routes = [
@@ -27,7 +30,10 @@ export const routes: Routes = [
      { path: 'ajouter-formation', component: AddFormationComponent },
      { path: 'enseignant-dashboard', component: DashboardProfComponent },
      { path: 'enseignant-Cours', component: CoursComponent },
-     { path: 'enseignant-Ajouter_Cours', component: AddCoursComponent },
+     { path: 'enseignant-ajouter-cours', component: AddCoursComponent },
+     { path: 'detail-cours', component: DetailCoursComponent},
+     { path: 'liens-cours', component: LienssCourComponent},
+     { path: 'Documents-cours', component: DocumentsCourComponent },
      { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

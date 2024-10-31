@@ -7,6 +7,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { AuthServiceService } from '../services/auth-service.service';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -60,7 +61,10 @@ export class LoginComponent implements AfterViewInit {
     this.authService.login(this.email, this.password, this.userType).subscribe(
       (response) => {
         console.log(response)
+        
         if (response.status === 'success') {
+          localStorage.setItem('token', response.access_token); // Store the access token
+        console.log("Token stored:", response.access_token);
           // Redirect based on user type
           if (this.userType === 'etudiant') {
             this.router.navigate(['/etudiant-dashboard']); // Adjust route as necessary

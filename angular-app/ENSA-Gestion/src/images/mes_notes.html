@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cours_style.css">
+
+    <title>AdminSite</title>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand"><img src="image/logo2.png" class="ensa-logo"> ENSATé</a>
+        <ul class="side-menu">
+            <li><a href="index.html"><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
+            <li class="divider" data-text="main">Main</li>
+            <li>
+                <a href="cours1.html"><i class='bx bxs-inbox icon'></i> Cours <i
+                        class='bx bx-chevron-right icon-right'></i></a>
+                <ul class="side-dropdown">
+                    <li><a href="cours1.html">Technologies JEE</a></li>
+                    <li><a href="cours2.html">Cours ER</a></li>
+                    <li><a href="cours3.html">Urbanisme des SI</a></li>
+                    <li><a href="cours4.html">Progiciel et système d'intégration</a></li>
+                    <li><a href="cours5.html">Threads</a></li>
+                    <li><a href="cours6.html">Management 3</a></li>
+                </ul>
+            </li>
+            <li><a href="student_profile.html"><i class='bx bxs-chart icon'></i> Mon Profil </a></li>
+            <li class="divider" data-text="table and forms">Section des notes</li>
+            <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
+            <li>
+                <a href="#"><i class='bx bxs-notepad icon'></i> Mes examens <i
+                        class='bx bx-chevron-right icon-right'></i></a>
+                <ul class="side-dropdown">
+                    <li><a href="mes_notes.html">Consultation des notes</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="ads">
+            <div class="wrapper">
+                <p>ENSA <span>Tétouan</span> <span></span></p>
+            </div>
+        </div>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- NAVBAR -->
+    <section id="content">
+        <!-- NAVBAR -->
+        <nav>
+            <i class='bx bx-menu toggle-sidebar'></i>
+            <form action="#">
+                <div class="form-group">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search icon'></i>
+                </div>
+            </form>
+            <a href="#" class="nav-link">
+                <i class='bx bxs-bell icon'></i>
+                <span class="badge">5</span>
+            </a>
+
+            <span class="divider"></span>
+            <div class="profile">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="">
+                <ul class="profile-link">
+                    <li><a href="#"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
+                    <li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
+                    <li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- NAVBAR -->
+
+        <!-- MAIN -->
+        <main>
+            <h1 class="title">Mes notes</h1>
+            <ul class="breadcrumbs">
+                <li><a href="#">Section des examens</a></li>
+                <li class="divider">/</li>
+                <li><a href="#" class="active">Mes notes</a></li>
+            </ul>
+            <div class="info-data">
+                <div class="container-moyenne">
+                <div class="main-skills">
+                    <div class="card">
+                        <h3>Moyenne Générale</h3>
+                        <p>14.567/20</p>
+                    </div>
+                </div>
+                    <section class="attendance">
+                        <div class="attendance-list">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Module</th>
+                                        <th>Matière</th>
+                                        <th>Note</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Java</td>
+                                        <td>Threads</td>
+                                        <td>14.5</td>
+                                        <td>Validé</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>TEC</td>
+                                        <td>Anglais</td>
+                                        <td>13</td>
+                                        <td>Validé</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>03</td>
+                                        <td>Java Avancé</td>
+                                        <td>Design Patterns</td>
+                                        <td>12</td>
+                                        <td>Validé</td>
+                                    </tr>
+                                    <tr>
+                                        <td>04</td>
+                                        <td>Java</td>
+                                        <td>Threads</td>
+                                        <td>17.5</td>
+                                        <td>Validé</td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Java</td>
+                                        <td>Threads</td>
+                                        <td>14.5</td>
+                                        <td>Validé</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+    </section>
+
+    </div>
+
+    </main>
+    <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

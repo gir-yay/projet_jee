@@ -10,13 +10,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import ma.ensa.project_jee.auth.AuthenticationService;
 import ma.ensa.project_jee.repository.DirecteurRepository;
 import ma.ensa.project_jee.repository.EnseignantRepository;
 import ma.ensa.project_jee.repository.EtudiantRepository;
@@ -26,7 +23,6 @@ public class ApplicationConfig {
     private final DirecteurRepository directeurRepository;
     private final EtudiantRepository etudiantRepository;
     private final EnseignantRepository enseignantRepository;
-    private AuthenticationService authenticationService;
     private final HttpServletRequest request;
 
 

@@ -63,7 +63,7 @@ export class LoginComponent implements AfterViewInit {
         if (response.status === 'success') {
           // Redirect based on user type
           if (this.userType === 'etudiant') {
-            this.router.navigate(['/etudiant-dashboard']); // Adjust route as necessary
+            this.router.navigate(['/etudiant/dashboard']); // Adjust route as necessary
           } else if (this.userType === 'enseignant') {
             this.router.navigate(['/enseignant-dashboard']); // Adjust route as necessary
           } 

@@ -41,9 +41,9 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title">Cours</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Home</a></li>
+				<li><a href="#">Matiers</a></li>
 				<li class="divider">/ Nom-Matiere /</li>
 				<li><a href="#" class="active">Cours</a></li>
 			</ul>
@@ -56,53 +56,29 @@
       <!-- tableau-->
 			<div class="data">
 				<div class="content-data">
-                    <a [routerLink]="['/enseignant-ajouter-cours']">ajouter un cours</a>
+					<a [routerLink]="['/enseignant/matiere', matiereId, 'cours', 'add']">Ajouter un cours</a>
+				
+					<a [routerLink]="['/enseignant/matiere', matiereId, 'cours', 'add']">Ajouter les Notes</a>
 					<div class="head">
 					
             <!--  pour afficher detail slider de la formation-->
             <div class="container">
 				<h1>Les Cours</h1>
-				<div id="moduleCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div id="moduleCarousel" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<div class="row">
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 1</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 2</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 3</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 4</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-							</div>
+					  <div *ngFor="let group of getCoursGroups(); let i = index" class="carousel-item" [class.active]="i === 0">
+						<div class="row">
+						  <div class="module col" *ngFor="let cour of group">
+							<a class="courNom" [routerLink]="['/enseignant/cours', cour.id]">{{ cour.nom }}</a>
+							<p>
+							  <a class="deletcour" (click)="deleteCour(cour)">Supprimer</a>
+							</p>
+							<p>
+							  <a class="btn btn-primary" (click)="openModal(cour)">Modifier le Cours</a>
+							</p>
+						  </div>
 						</div>
-						<div class="carousel-item">
-							<div class="row">
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 5</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 6</h1>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 7</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-								<div class="module col" [routerLink]="['/detail-cours']">
-									<h1>Analyse 8</h1>
-									<p>Module s3ib bzf</p>
-								</div>
-							</div>
-						</div>
+					  </div>
 					</div>
 			
 					<button class="carousel-control-prev" type="button" data-bs-target="#moduleCarousel" data-bs-slide="prev">
@@ -127,3 +103,24 @@
 		<!-- MAIN -->
 	</section>
 	<!-- NAVBAR -->
+<!-- Modal structure -->
+<div class="modal" *ngIf="isModalOpen" style="display: block;">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Modifier le Cours: {{ selectedCour?.nom }}</h5>
+		  <button type="button" class="close" (click)="isModalOpen = false">&times;</button>
+		</div>
+		<div class="modal-body">
+			<form (ngSubmit)="updateCour()">
+				<div class="mb-3">
+				  <label for="nom" class="form-label">Nom:</label>
+				  <input id="nom" [(ngModel)]="selectedCour.nom" name="nom" class="form-control" required />
+				</div>
+				<button type="submit" class="btn btn-primary">Mettre à jour le Cours</button>
+				<button type="button" class="btn btn-secondary" (click)="isModalOpen = false">Annuler</button>
+			  </form>
+		</div>
+	  </div> <!-- End of modal-content -->
+	</div> <!-- End of modal-dialog -->
+  </div> <!-- End of modal -->

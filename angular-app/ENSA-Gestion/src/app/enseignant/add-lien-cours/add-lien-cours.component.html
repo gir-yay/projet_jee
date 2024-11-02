@@ -61,15 +61,16 @@
             <!-- formulaire pour ajouter une formation-->
 			 <div class="container">
     <!-- Title section -->
-    <div class="title">Ajouter un cours</div>
+    <div class="title">Ajouter un lien</div>
     <div class="content">
      
-      <form action="#">
+      <form (ngSubmit)="ajouterLien()">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Lien de cours</span>
-            <input type="text" placeholder="Le lien Du Cours" required>
+            <span class="details">Lien</span>
+            <input type="text"id="nomLien" [(ngModel)]="nomLien" name="nomLien" placeholder="Le lien" required>
           </div>
+		  
          
         </div>
         <!-- Submit button -->

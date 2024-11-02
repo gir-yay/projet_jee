@@ -40,11 +40,11 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title">{{ coursNom }}</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Home</a></li>
+				<li><a href="#">Cours</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">Matiers</a></li>
+				<li><a  [routerLink]="['/enseignant/cours', courId]" >{{ coursNom }}</a></li>
 			</ul>
 			<div class="info-data">
 			
@@ -60,17 +60,21 @@
             <!--  pour afficher detail slider de la formation-->
             <div class="container">
                 <!-- Title section -->
-                <div class="title">Nom de  cours</div>
+                <div class="title">{{ coursNom }}</div>
                 <div class="content">
                  
                   <form action="#">
                     <div class="user-details">
                       <div class="input-box">
-                        <span class="details"><a [routerLink]="['/Documents-cours']"  >Documents</a></span>
+                        <span class="details"> <a [routerLink]="['/enseignant/documents-cours', courId]">Documents</a></span>
                         
                       </div>
                       <div class="input-box">
-                        <span class="details"><a [routerLink]="['/']"  >Liens</a></span>
+                        <span class="details">  <a [routerLink]="['/enseignant/liens-cours', courId]">Liens</a></span>
+                       
+                      </div>
+					  <div class="input-box">
+                        <span class="details">  <a [routerLink]="['/enseignant/liens-cours', courId]">Notes</a></span>
                        
                       </div>
                      

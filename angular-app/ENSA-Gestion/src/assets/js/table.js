@@ -52,7 +52,7 @@ function sortTable(column, sort_asc) {
 }
 
 // 3. Converting HTML table to PDF
-
+/*
 const pdf_btn = document.querySelector('#toPDF');
 const customers_table = document.querySelector('#customers_table');
 
@@ -202,3 +202,4 @@ const downloadFile = function (data, fileType, fileName = '') {
     a.click();
     a.remove();
 }
+    */

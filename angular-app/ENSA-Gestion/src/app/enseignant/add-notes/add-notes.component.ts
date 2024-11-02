@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-add-document',
   standalone: true,
   imports: [],
-  templateUrl: './add-document.component.html',
-  styleUrl: './add-document.component.css'
+  templateUrl: './add-notes.component.html',
+  styleUrl: './add-notes.component.css'
 })
-export class AddDocumentComponent {
+export class AddNotesComponent {
 
 }

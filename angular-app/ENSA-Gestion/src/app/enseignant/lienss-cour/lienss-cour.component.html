@@ -40,11 +40,11 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title">{{ coursNom }}</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Home</a></li>
-				<li class="divider">/</li>
-				<li><a href="#" class="active">Matiers</a></li>
+				<li class="divider">Cours /</li>
+				<li><a  [routerLink]="['/enseignant/cours', coursId]" >{{ coursNom }}</a></li>
+				<li><a  [routerLink]="['/enseignant/liens-cours', coursId]" >/ Liens</a></li>
 			</ul>
 			<div class="info-data">
 			
@@ -62,44 +62,33 @@
             <main class="table" id="customers_table">
                 <section class="table__header">
                     <h1>Liens</h1>
-                    <button class="btn btn-primary" >Ajouter Un lien</button>
+                    <a class="btn btn-primary" [routerLink]="['/enseignant/ajouter-lien', coursId]">Ajouter Un lien</a>
                     <div class="input-group">
                         <input type="search" placeholder="Rechercher...">
                     </div>
-                    <div class="export__file">
-                        <label for="export-file" class="export__file-btn" title="Export File"></label>
-                        <input type="checkbox" id="export-file">
-                        <div class="export__file-options">
-                            <label>Export As &nbsp; &#10140;</label>
-                            <label for="export-file" id="toJSON">JSON <img src="../../images/json.png" alt=""></label>
-                            <label for="export-file" id="toCSV">CSV <img src="../../images/csv.png" alt=""></label>
-                            <label for="export-file" id="toEXCEL">EXCEL <img src="../../images/excel.png" alt=""></label>
-                        </div>
-                    </div>
+                   
                 </section>
                 <section class="table__body">
                     <table>
-                        <thead>
-                            <tr>
-                                <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Nom <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Modifier <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Supprimer <span class="icon-arrow">&UpArrow;</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> 1 </td>
-                                <td> Youssef </td>
-                                <td>
-                                    <p class="status delivered">Modifier</p>
-                                </td>
-                                <td>
-                                    <p class="status cancelled">Supprimer</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+						<thead>
+						  <tr>
+							<th>Nom<span class="icon-arrow">&UpArrow;</span></th>
+							<th>Modifier</th>
+							<th>Supprimer</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr *ngFor="let lien of liens">
+							<td>{{ lien.lien }}</td> <!-- Affiche le nom du document -->
+							<td>
+							  <p ><a class="btn btn-primary" (click)="openModal(lien)">Modifier</a></p>
+							</td>
+							<td>
+							  <p><a class="status cancelled" (click)="deleteLien(lien)">Supprimer</a></p>
+							</td>
+						  </tr>
+						</tbody>
+					  </table>
                 </section>
             </main>
   
@@ -115,3 +104,25 @@
 		<!-- MAIN -->
 	</section>
 	<!-- NAVBAR -->
+
+<!-- Modal structure -->
+<div class="modal" *ngIf="isModalOpen" style="display: block;">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Modifier le lien</h5>
+		  <button type="button" class="close" (click)="isModalOpen = false">&times;</button>
+		</div>
+		<div class="modal-body">
+			<form (ngSubmit)="updatelien()">
+				<div class="mb-3">
+				  <label for="nom" class="form-label">Nom:</label>
+				  <input id="nom" [(ngModel)]="selectedLien.lien" name="lien" class="form-control" required />
+				</div>
+				<button type="submit" class="btn btn-primary">Mettre à jour le lien</button>
+				<button type="button" class="btn btn-secondary" (click)="isModalOpen = false">Annuler</button>
+			  </form>
+		</div>
+	  </div> <!-- End of modal-content -->
+	</div> <!-- End of modal-dialog -->
+  </div> <!-- End of modal -->

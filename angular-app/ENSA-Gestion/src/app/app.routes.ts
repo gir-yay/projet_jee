@@ -19,6 +19,8 @@ import { DetailCoursComponent } from './enseignant/detail-cours/detail-cours.com
 import { DocumentsCourComponent } from './enseignant/documents-cour/documents-cour.component';
 import { LienssCourComponent } from './enseignant/lienss-cour/lienss-cour.component';
 import { AddCoursComponent } from './enseignant/add-cours/add-cours.component';
+import { AddLienCoursComponent} from './enseignant/add-lien-cours/add-lien-cours.component';
+import { AddDocumentComponent} from './enseignant/add-document/add-document.component';
 
 
 // Espace etudiant
@@ -41,12 +43,13 @@ export const routes: Routes = [
      { path: 'List-directeurs', component: ListesDirecteursComponent },
      { path: 'ajouter-formation', component: AddFormationComponent },
      { path: 'enseignant-dashboard', component: DashboardProfComponent },
-     { path: 'enseignant-Cours', component: CoursComponent },
-     { path: 'enseignant-ajouter-cours', component: AddCoursComponent },
-     { path: 'detail-cours', component: DetailCoursComponent},
-     { path: 'liens-cours', component: LienssCourComponent},
-     { path: 'Documents-cours', component: DocumentsCourComponent },
-     { path: 'enseignant-Ajouter_Cours', component: AddCoursComponent },
+     { path: 'matiere/:id/cours', component: CoursComponent },
+     { path: 'enseignant/matiere/:matiereId/cours/add', component: AddCoursComponent },
+     { path: 'enseignant/cours/:id', component: DetailCoursComponent},
+     { path: 'enseignant/liens-cours/:id', component: LienssCourComponent},
+     { path: 'enseignant/ajouter-lien/:id', component: AddLienCoursComponent},
+     { path: 'enseignant/documents-cours/:id', component: DocumentsCourComponent },
+     { path: 'enseignant/ajouter-document/:id', component: AddDocumentComponent},
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
      { path: 'notes', component: NotesComponent },
      { path: 'matieres/:id', component: MatieresComponent },

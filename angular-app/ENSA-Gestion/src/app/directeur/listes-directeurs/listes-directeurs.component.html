@@ -112,6 +112,7 @@
                   <div class="input-group">
                       <input type="search" placeholder="Rechercher...">
                   </div>
+				  <!--
                   <div class="export__file">
                       <label for="export-file" class="export__file-btn" title="Export File"></label>
                       <input type="checkbox" id="export-file">
@@ -122,6 +123,7 @@
                           <label for="export-file" id="toEXCEL">EXCEL <img src="../../images/excel.png" alt=""></label>
                       </div>
                   </div>
+				-->
               </section>
               <section class="table__body">
                   <table>
@@ -132,19 +134,19 @@
                               <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                              <th> Matier <span class="icon-arrow">&UpArrow;</span></th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td> 1 </td>
-                              <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Mahmoud</td>
-                              <td> Youssef </td>
-                              <td> m.youssef&#64;uae.ac.ma </td>
+                          <tr *ngFor="let directeur of directeurs">
+                              <td>{{directeur.id}}</td>
+                              <td>{{directeur.nom}}</td>
+                              <td> {{directeur.prenom}} </td>
+                              <td> {{directeur.email}}</td>
                               <td>
-                                  <p class="status delivered">Statut</p>
+								<p [ngClass]="directeur.status ? 'status cancelled' : 'status delivered'">
+									{{ directeur.status ? 'Inactive' : 'Active' }}
+								  </p>
                               </td>
-                              <td> <strong> Resaux </strong></td>
                           </tr>
                       </tbody>
                   </table>

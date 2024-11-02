@@ -1,6 +1,7 @@
 import { Component,OnInit , ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
+import { DirecteurService } from '../services/directeur.service';
 
 
 
@@ -14,6 +15,8 @@ import { CommonModule } from '@angular/common';
 export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   isPopupOpen = false;
   selectedFile: File | null = null;
+
+  directeurs: any[] = [];
 
   openPopup(): void {
     this.isPopupOpen = true;
@@ -35,7 +38,7 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -44,6 +47,16 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
 //script pour la table
 ngOnInit(): void {
   this.loadScript('../../../assets/js/table.js');
+  
+  this.directeurService.getDirecteurs().subscribe(
+    (data: any[]) => {
+      this.directeurs = data; 
+    },
+    (error: any) => {
+      console.error('Erreur lors de la récupération des modules:', error);
+    }
+  );
+
 }
 loadScript(src: string): void {
   const script = document.createElement('script');

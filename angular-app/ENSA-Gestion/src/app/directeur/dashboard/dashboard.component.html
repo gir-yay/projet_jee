@@ -71,7 +71,7 @@
 				<div class="card">
 					<div class="head">
 						<div>
-							<h2>234</h2>
+							<h2>{{nb_ens}}</h2>
 							<p>enseignants</p>
                             
 						</div>
@@ -83,7 +83,7 @@
 				<div class="card">
 					<div class="head">
 						<div>
-							<h2>465</h2>
+							<h2>{{nb_etu}}</h2>
 							<p>etudiants</p>
 						</div>
 						<i class='bx bxs-user icon' ></i>
@@ -143,6 +143,7 @@
                       <input type="search" placeholder="Rechercher...">
                      
                   </div>
+				  <!--
                   <div class="export__file">
                       <label for="export-file" class="export__file-btn" title="Export File"></label>
                       <input type="checkbox" id="export-file">
@@ -153,6 +154,7 @@
                           <label for="export-file" id="toEXCEL">EXCEL <img src="../../../images/excel.png" alt=""></label>
                       </div>
                   </div>
+				-->
               </section>
               <section class="table__body">
                   <table>
@@ -163,19 +165,21 @@
                               <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                              <th> Matier <span class="icon-arrow">&UpArrow;</span></th>
+                              <!--<th> Matier <span class="icon-arrow">&UpArrow;</span></th>-->
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td> 1 </td>
-                              <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Mahmoud</td>
-                              <td> Youssef </td>
-                              <td> m.youssef&#64;uae.ac.ma </td>
+                          <tr *ngFor="let enseignant of enseignants">
+                              <td> {{enseignant.id}} </td>
+                              <td> {{enseignant.nom}}</td>
+                              <td> {{enseignant.prenom}} </td>
+                              <td> {{enseignant.email}}</td>
                               <td>
-                                  <p class="status delivered">Statut</p>
+								<p [ngClass]="enseignant.status ? 'status cancelled' : 'status delivered'">
+								  {{ enseignant.status ? 'Inactive' : 'Active' }}
+								</p>
                               </td>
-                              <td> <strong> Resaux </strong></td>
+                              <!--<td> <strong> Resaux </strong></td>-->
                           </tr>
                       </tbody>
                   </table>

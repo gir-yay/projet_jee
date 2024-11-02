@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import ma.ensa.project_jee.dto.ArchiverDto;
+import ma.ensa.project_jee.dto.MatiereDto;
 import ma.ensa.project_jee.dto.UtilisatuerDto;
+import ma.ensa.project_jee.service.MatiereService;
 import ma.ensa.project_jee.service.UtilisateurService;
 
 @RequiredArgsConstructor
@@ -28,6 +31,8 @@ import ma.ensa.project_jee.service.UtilisateurService;
 public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;
+    private final MatiereService matiereService;
+
 
     @GetMapping("/directeurs")
     public List<UtilisatuerDto> getDirecteurs() {
@@ -42,6 +47,11 @@ public class UtilisateurController {
     @GetMapping("/enseignants")
     public List<UtilisatuerDto> getEnseignants() {
         return utilisateurService.getAllEnseignants();
+    }
+
+     @GetMapping("/enseignants/{id}/matiere")
+    public List<MatiereDto> getMatieresByEnseignant(@PathVariable int id) {
+        return matiereService.getMatieresByEnseignant(id);
     }
 
     @PostMapping("/ajouter")

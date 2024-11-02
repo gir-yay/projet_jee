@@ -13,5 +13,6 @@ public class UtilisatuerDto {
     private String nom;
     private String prenom;
     private String email;
+    private boolean status;
 
 }

@@ -95,6 +95,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 import { Component, OnInit, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { EnseignantService } from '../services/enseignant.service';
+import { EtudiantService } from '../services/etudiant.service';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -104,10 +108,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
+  enseignants: any[] = [];
+  matiere : any; 
+  nb_ens : any;
+
+  etudiants: any[] = [];
+  nb_etu : any;
+
   isPopupOpen = false;
   selectedFile: File | null = null;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private enseignantService: EnseignantService, private etudiantService: EtudiantService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -134,6 +145,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 //script pour la table
   ngOnInit(): void {
     this.loadScript('../../../assets/js/table.js');
+
+    this.enseignantService.getEnseignants().subscribe(
+      (data: any[]) => {
+        this.enseignants = data; 
+        this.nb_ens = data.length;
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération des modules:', error);
+      }
+    );
+
+
+    this.etudiantService.getEtudiants().subscribe(
+      (data: any[]) => {
+        this.etudiants = data; 
+        this.nb_etu = data.length;
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération des modules:', error);
+      }
+    );
+
+    
   }
   loadScript(src: string): void {
     const script = document.createElement('script');

@@ -30,7 +30,7 @@ public class MatiereEnseignantController {
         return matiereService.getMatieresByEnseignant(enseignant.getId());
     }
 
-
+    
     @GetMapping("/{id}/cours")
     public List<CoursDto> getCours(@PathVariable int id) {
 

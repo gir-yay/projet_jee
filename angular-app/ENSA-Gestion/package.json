@@ -23,6 +23,7 @@
     "@angular/ssr": "^18.2.9",
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
+    "ensa-gestion": "file:",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "swiper": "^11.1.14",

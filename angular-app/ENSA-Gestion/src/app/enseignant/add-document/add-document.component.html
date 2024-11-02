@@ -64,11 +64,15 @@
     <div class="title">Ajouter un document</div>
     <div class="content">
      
-      <form action="#">
+      <form (ngSubmit)="ajouterDocument()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nom</span>
-            <input type="text" placeholder="Le nom du Document" required>
+            <input type="text"id="nomDocument" [(ngModel)]="nomDocument"  name="nomDocument" placeholder="Le nom du Document" required>
+          </div>
+		  <div class="input-box">
+            <span class="details">Fichier</span>
+            <input type="file" id="urlDocument" [(ngModel)]="urlDocument" name="urlDocument"  placeholder="Le Document" required>
           </div>
          
         </div>

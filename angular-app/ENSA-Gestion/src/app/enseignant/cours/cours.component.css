@@ -483,8 +483,8 @@ main .content-data .head h3 {
 }
 .container .row .module:hover{
 	transform: scale(1.1);
-	background: #0e4894;
-	color: #fff;
+	/*background: #0e4894;*/
+	color: #555;
 }
 .container .row .module i{
 	font-size: 40px;
@@ -525,7 +525,7 @@ main .content-data .head h3 {
 }
 
 .module {
-    border: 1px solid #007bff; /* Bordure pour les modules */
+    border: 1px solid #0e4894; /* Bordure pour les modules */
     border-radius: 10px; /* Coins arrondis */
     padding: 15px; /* Espacement interne */
     text-align: center; /* Centrer le texte */
@@ -550,4 +550,219 @@ main .content-data .head h3 {
 
 .carousel-control-prev:hover, .carousel-control-next:hover {
     background-color: rgba(0, 123, 255, 0.1); /* Couleur de fond au survol */
+}
+
+
+/*************/
+
+.modal {
+    display: block; /* Rendre le modal visible */
+    position: fixed; /* Positionner le modal par rapport à la fenêtre */
+    z-index: 1050; /* Assurez-vous que le modal est au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%; /* Occuper toute la largeur */
+    height: 100%; /* Occuper toute la hauteur */
+    overflow: auto; /* Permet le défilement si le contenu dépasse */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+.modal-dialog {
+    position: relative; /* Positionner le contenu du modal */
+    margin: auto; /* Centrer le modal horizontalement */
+    top: 10%; /* Espacement depuis le haut de la fenêtre */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fond blanc pour le contenu */
+    border: 1px solid #dee2e6; /* Bordure légère */
+    border-radius: 0.5rem; /* Coins arrondis */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Ombre légère */
+    max-width: 500px; /* Largeur maximale */
+    margin: auto; /* Centrer le contenu du modal */
+}
+
+.modal-header {
+    display: flex; /* Utiliser flexbox pour l'en-tête */
+    justify-content: space-between; /* Espacement entre le titre et le bouton de fermeture */
+    align-items: center; /* Centrer verticalement les éléments */
+    padding: 1rem; /* Espacement autour de l'en-tête */
+    border-bottom: 1px solid #dee2e6; /* Bordure inférieure */
+}
+
+.modal-title {
+    font-size: 1.25rem; /* Taille de la police du titre */
+    margin: 0; /* Supprimer les marges */
+}
+
+.btn-close {
+    background: none; /* Supprimer le fond par défaut */
+    border: none; /* Supprimer la bordure */
+    font-size: 1.5rem; /* Taille de la police du bouton de fermeture */
+    color: #000; /* Couleur du texte du bouton de fermeture */
+    cursor: pointer; /* Changer le curseur en main */
+}
+
+.modal-body {
+    padding: 1rem; /* Espacement autour du corps du modal */
+}
+
+.mb-3 {
+    margin-bottom: 1rem; /* Espacement en bas des éléments */
+}
+
+.btn {
+    margin-right: 0.5rem; /* Espacement entre les boutons */
+}
+
+/* Ajouter une transition pour le modal */
+.modal.fade {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+.close {
+    background: transparent; /* Fond transparent */
+    border: none; /* Pas de bordure */
+    font-size: 1.5rem; /* Taille de la police pour le bouton */
+    color: #007bff; /* Couleur du texte (vous pouvez choisir une autre couleur) */
+    cursor: pointer; /* Changer le curseur en main */
+    transition: color 0.2s ease; /* Transition douce pour la couleur */
+}
+
+.close:focus {
+    outline: none; /* Supprimer l'outline par défaut */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Ombre autour du bouton au focus */
+}
+
+.close:active {
+    transform: scale(0.95); /* Réduire légèrement la taille au clic */
+    transition: transform 0.1s ease; /* Transition rapide pour l'effet de clic */
+}
+.btn-primary{
+	background-color: #0e4894;
+	margin-top: 5px;
+}
+.courNom{
+	color: #0e4894;
+}
+.deletcour{
+	color: #bb4949;
+}
+
+/* Style pour le fond semi-transparent */
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+  }
+  .modal-body{
+	margin: 30px;
+  }
+  /* Style pour la boite modale */
+  .popup-custom {
+	max-width: 500px;
+	border-radius: 8px;
+	background: #f9f9f9;
+  }
+
+  /* Styles pour l'en-tête de la popup */
+  .modal-header {
+	background-color:#0e4894;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex; /* Utiliser flexbox pour l'en-tête */
+    justify-content: space-between; /* Espacement entre le titre et le bouton de fermeture */
+    align-items: center; /* Centrer verticalement les éléments */
+    padding: 1rem; /* Espacement autour de l'en-tête */
+  }
+  
+
+
+  .modal-header h5 {
+	font-weight: bold;
+	padding: 5px;
+
+  }
+  
+  .modal-header .bg-primary{
+	background-color: #0e4894;
+  }
+  .btn-close {
+	background: transparent;
+	color: rgb(10, 1, 1);
+	opacity: 1;
+	margin-left: 250px;
+	
+  }
+  .close{
+	background:#0e4894;
+	color: #fff;
+	opacity: 1;
+	border: none;
+	padding-top: 0;
+	margin-left: 460px;
+	margin-bottom: 4px;
+	position: fixed;
+  }
+ .text-white{
+	padding-top: 0;
+
+  }
+
+  /* Effet d'ombre et d'arrondi */
+  .modal-content {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+  }
+
+  /* Animation d'apparition pour la popup */
+  .fade.show {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Styles pour le bouton */
+  .btn-primary {
+	margin: 10px;
+	background-color: #0e4894;
+	border: none;
+	padding: 5px;
+  }
+  .btn-secondary{
+	margin: 10px;
+	background-color: #585c62;
+	border: none;
+	padding: 5px;
+  }
+  
+.modal {
+    display: block; 
+    position: fixed; 
+    z-index: 1050; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-dialog {
+    position: relative; 
+    margin: auto; 
+    top: 10%; 
+}
+
+.modal-content {
+    background-color: #ffffff; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
+    max-width: 500px;
+    margin: auto; 
 }

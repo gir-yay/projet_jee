@@ -63,20 +63,18 @@
     <!-- Title section -->
     <div class="title">Ajouter un cours</div>
     <div class="content">
-     
-      <form action="#">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Nom</span>
-            <input type="text" placeholder="Le nom du Cours" required>
-          </div>
-         
-        </div>
-        <!-- Submit button -->
-        <div class="button">
-          <input type="submit" value="Ajouter">
-        </div>
-      </form>
+		<form (ngSubmit)="ajouterCour()">
+			<div class="user-details">
+			  <div class="input-box">
+				<span class="details">Nom</span>
+				<input type="text" placeholder="Le nom du Cours" [(ngModel)]="nouveauCour.nom" name="nom" required>
+			  </div>
+			</div>
+			<!-- Submit button -->
+			<div class="button">
+			  <input type="submit" value="Ajouter">
+			</div>
+		  </form>
     </div>
   </div>
             

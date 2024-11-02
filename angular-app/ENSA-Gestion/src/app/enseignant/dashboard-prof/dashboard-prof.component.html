@@ -62,24 +62,14 @@
 				<h1>Mes Matiers</h1>
 				<div id="moduleCarousel" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						<div class="carousel-item active">
-						  <div class="row">
-							<div class="module col" *ngFor="let matiere of matieres.slice(0, 4)" [routerLink]="['/enseignant-Cours']">
-							  <h1>{{ matiere.nom }}</h1> <!-- Assurez-vous que 'nom' est la bonne clé -->
-							  <p>{{ matiere.description }}</p> <!-- Remplacez 'description' par la clé correcte -->
-							</div>
-						  </div>
-						</div>
-					  
-						<div class="carousel-item" *ngIf="matieres.length > 4"> <!-- Vérifie s'il y a plus de 4 matières -->
-						  <div class="row">
-							<div class="module col" *ngFor="let matiere of matieres.slice(4)" [routerLink]="['/enseignant-Cours']">
-							  <h1>{{ matiere.nom }}</h1>
-							  <p>{{ matiere.description }}</p>
-							</div>
+					  <div *ngFor="let group of getMatieresGroups(); let i = index" class="carousel-item" [class.active]="i === 0">
+						<div class="row">
+						  <div class="module col" *ngFor="let matiere of group" (click)="goToCours(matiere.id)">
+							<h1>{{ matiere.nom }}</h1> 
 						  </div>
 						</div>
 					  </div>
+					</div>
 			
 					<button class="carousel-control-prev" type="button" data-bs-target="#moduleCarousel" data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>

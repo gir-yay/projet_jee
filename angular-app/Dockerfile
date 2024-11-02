@@ -26,4 +26,4 @@ RUN npm install -g http-server
 EXPOSE 4200
 
 # Start the application using the lightweight server
-CMD ["http-server", "dist/ensa-gestion", "-p", "4200", "--host", "0.0.0.0"]
+CMD ["http-server", "dist/ENSA-Gestion", "-p", "4200", "--host", "0.0.0.0"]

@@ -14,7 +14,9 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 @AllArgsConstructor
 @Entity(name = "etudiants")
 public class Etudiant extends Utilisateur {

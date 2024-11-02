@@ -1,23 +1,16 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a  class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
+        <li><a class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
         </li>
         <li class="divider" data-text="main">Main</li>
         <li>
             <a href="#"><i class='bx bxs-inbox icon'></i> Cours <i class='bx bx-chevron-right icon-right'></i></a>
             <ul class="side-dropdown">
                 <li><a href="#">Technologies JEE</a></li>
-                <li><a href="#">Cours ER</a></li>
-                <li><a href="#">Urbanisme des SI</a></li>
-                <li><a href="#">Progiciel et système d'intégration</a></li>
-                <li><a href="#">Threads</a></li>
-                <li><a href="#">Management 3</a></li>
             </ul>
         </li>
-        <li><a href="#"><i class='bx bxs-chart icon'></i> Mon Profil </a></li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
         <li>
             <a href="#"><i class='bx bxs-notepad icon'></i> Mes examens<i
                     class='bx bx-chevron-right icon-right'></i></a>
@@ -69,46 +62,16 @@
         <div class="info-data">
             <div class="container">
                 <div class="box-container">
+                    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-                    <!-- <div class="box">
-                        <li *ngFor="let matiere of matieres">
+                    <div *ngIf="!errorMessage"></div>
+                    <div class="box" *ngFor="let matiere of matieres">
+                        <li>
                             <h3>{{ matiere.nom }}</h3>
+                            <a  class="btn" [routerLink]="['/matieres', matiere.id, 'cours']">Voir les cours</a>
                         </li>
-                    </div> -->
-                    <div class="box">
-                        <img src="../../images/icon-2.png" alt="">
-                        <h3>Matière 1</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
                     </div>
 
-                    <div class="box">
-                        <img src="../../images/icon-3.png" alt="">
-                        <h3>Matière 2</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-4.png" alt="">
-                        <h3>Matière 3</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-5.png" alt="">
-                        <h3>Matière 4</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-6.png" alt="">
-                        <h3>Matière 5</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
                 </div>
             </div>
         </div>

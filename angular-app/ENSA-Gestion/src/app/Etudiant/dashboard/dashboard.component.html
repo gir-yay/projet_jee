@@ -1,10 +1,12 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
+        <li><a [routerLink]="['etudiant/dashboard']" class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
         <li class="divider" data-text="main">Main</li>
         <li>
-            <a href="#"><i class='bx bxs-inbox icon'></i> Cours <i class='bx bx-chevron-right icon-right'></i></a>
+            <a (click)="toggleCoursesDropdown()" class="dropdown-toggle">
+                <i class='bx bxs-inbox icon'></i> Cours
+            </a>        
             <ul class="side-dropdown">
                 <li><a href="#">Technologies JEE</a></li>
                 <li><a href="#">Cours ER</a></li>
@@ -14,14 +16,14 @@
                 <li><a href="#">Management 3</a></li>
             </ul>
         </li>
-        <li><a href="#"><i class='bx bxs-chart icon'></i> Mon Profil </a></li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
         <li>
-            <a href="#"><i class='bx bxs-notepad icon'></i> Mes examens<i
-                    class='bx bx-chevron-right icon-right'></i></a>
-            <ul class="side-dropdown">
-                 <li><a [routerLink]="['/notes']">Mes notes</a></li>
+            <a (click)="toggleDropdown()" class="dropdown-toggle">
+                <i class='bx bxs-notepad icon'></i> Mes examens
+                <i class='bx bx-chevron-right icon-right'></i>
+            </a>
+            <ul class="side-dropdown" [class.show]="isDropdownOpen">
+                <li><a [routerLink]="['/notes']">Mes notes</a></li>
             </ul>
         </li>
     </ul>
@@ -51,7 +53,6 @@
         <div class="profile">
             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="">
             <ul class="profile-link">
-                <li><a href="#"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
                 <li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
                 <li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
             </ul>
@@ -63,53 +64,19 @@
         <ul class="breadcrumbs">
             <li><a href="#">Home</a></li>
             <li class="divider">/</li>
-            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#" class="active">Modules</a></li>
         </ul>
         <div class="info-data">
             <div class="container">
                 <div class="box-container">
 
-                    <!-- <div class="box">
-                        <li *ngFor="let module of modules">
-                            <h3>{{ module.libelle }} (Code: {{ module.code }})</h3>
-                            <p>Description: {{ module.description }}</p> 
+                    <div class="box" *ngFor="let module of modules">
+                         <li>
+                            <h3>{{ module.nom }}</h3>
                           </li>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div> -->
-                    <div class="box">
-                        <img src="../../images/icon-2.png" alt="">
-                        <h3>Module 1</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-3.png" alt="">
-                        <h3>Module 2</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-4.png" alt="">
-                        <h3>Module 3</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-5.png" alt="">
-                        <h3>Module 4</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-6.png" alt="">
-                        <h3>Module 5</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
+                          <a [routerLink]="['/matieres', module.id]" class="btn">Voir les détails</a>
+                        </div>
+                   
                 </div>
             </div>
         </div>

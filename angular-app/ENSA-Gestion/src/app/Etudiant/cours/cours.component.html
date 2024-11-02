@@ -1,11 +1,11 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a  class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
+        <li><a><i class='bx bxs-dashboard icon'></i> Acceuil</a>
         </li>
         <li class="divider" data-text="main">Main</li>
         <li>
-            <a href="#"><i class='bx bxs-inbox icon'></i> Cours <i class='bx bx-chevron-right icon-right'></i></a>
+            <a href="#" class="active"><i class='bx bxs-inbox icon'></i> Cours <i class='bx bx-chevron-right icon-right'></i></a>
             <ul class="side-dropdown">
                 <li><a href="#">Technologies JEE</a></li>
                 <li><a href="#">Cours ER</a></li>
@@ -15,9 +15,7 @@
                 <li><a href="#">Management 3</a></li>
             </ul>
         </li>
-        <li><a href="#"><i class='bx bxs-chart icon'></i> Mon Profil </a></li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
         <li>
             <a href="#"><i class='bx bxs-notepad icon'></i> Mes examens<i
                     class='bx bx-chevron-right icon-right'></i></a>
@@ -69,47 +67,15 @@
         <div class="info-data">
             <div class="container">
                 <div class="box-container">
-<!-- 
-                    <div class="box">
-                        <li *ngFor="let cours of cours">
+
+                    <div class="box" *ngFor="let cours of cours">
+                        <li >
                             <h3>{{ cours.nom }}</h3>
                         </li>
+                        <a  class="btn">Voir les cours</a>
 
-                    </div> -->
-                    <div class="box">
-                        <img src="../../images/icon-2.png" alt="">
-                        <h3>Cours 1</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
                     </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-3.png" alt="">
-                        <h3>Cours 2</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-4.png" alt="">
-                        <h3>Cours 3</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-5.png" alt="">
-                        <h3>Cours 4</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
-
-                    <div class="box">
-                        <img src="../../images/icon-6.png" alt="">
-                        <h3>Cours 5</h3>
-                        <p>Description</p>
-                        <a href="#" class="btn">Voir les détails</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>

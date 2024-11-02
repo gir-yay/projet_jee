@@ -2,7 +2,7 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo"> ENSATé</a>
     <ul class="side-menu">
-        <li><a href="index.html"><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
+        <li><a [routerLink]="['etudiant/dashboard']" ><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
         <li class="divider" data-text="main">Main</li>
         <li>
             <a (click)="toggleCoursesDropdown()" class="dropdown-toggle">
@@ -10,17 +10,10 @@
                 <i class='bx bx-chevron-right icon-right'></i>
             </a>
             <ul class="side-dropdown" [class.show]="isCoursesDropdownOpen">
-                <li><a [routerLink]="['/cours1']">Technologies JEE</a></li>
-                <li><a [routerLink]="['/cours2']">Cours ER</a></li>
-                <li><a [routerLink]="['/cours3']">Urbanisme des SI</a></li>
-                <li><a [routerLink]="['/cours4']">Progiciel et système d'intégration</a></li>
-                <li><a [routerLink]="['/cours5']">Threads</a></li>
-                <li><a [routerLink]="['/cours6']">Management 3</a></li>
+                <li><a href="#">Technologies JEE</a></li>
             </ul>
         </li>
-        <li><a href="student_profile.html"><i class='bx bxs-chart icon'></i> Mon Profil </a></li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a href="#"><i class='bx bx-table icon'></i> Tables</a></li>
        <li>
         <a (click)="toggleDropdown()" class="dropdown-toggle">
             <i class='bx bxs-notepad icon'></i> Mes examens
@@ -76,28 +69,25 @@
         </ul>
         <div class="info-data">
             <div class="container-moyenne">
-                
-               
-<section class="table__body">
-    <table>
-        <thead>
-            <tr>
-                <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                <th> Matière <span class="icon-arrow">&UpArrow;</span></th>
-                <th> Note <span class="icon-arrow">&UpArrow;</span></th>
-                <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let note of notes">
-                <td>{{ note.id }}</td>
-                <td>{{ note.matiere }}</td>
-                <td>{{ note.note }}</td>
-                <td>{{ note.status }}</td>
-              </tr>
-        </tbody>
-    </table>
-</section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Matière <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Note <span class="icon-arrow">&UpArrow;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let note of notes">
+                                <td>{{ note.id }}</td>
+                                <td>{{ note.matiere }}</td>
+                                <td>{{ note.value }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="notes.length === 0 && !isLoading">Aucune note à afficher.</div> 
+                </section>
             </div>
         </div>
     </main>

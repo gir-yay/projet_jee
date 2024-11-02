@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
+// import { LoginAdminComponent } from './login-admin/login-admin.component';
+
 
 import { DashboardComponent } from './directeur/dashboard/dashboard.component';
 import { FormationComponent } from './directeur/formation/formation.component';
@@ -29,6 +31,7 @@ import { CoursComponent as EtudiantCoursComponent } from './Etudiant/cours/cours
 
 export const routes: Routes = [
      { path: 'login', component: LoginComponent },
+     // { path: 'login-admin', component: LoginAdminComponent },
      { path: 'dashboard', component: DashboardComponent },
      { path: 'formation', component: FormationComponent },
      { path: 'ajouter-module', component: AddModuleComponent },
@@ -47,7 +50,7 @@ export const routes: Routes = [
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
      { path: 'notes', component: NotesComponent },
      { path: 'matieres/:id', component: MatieresComponent },
-     { path: 'cours/:id', component: EtudiantCoursComponent },
+     { path: 'matieres/:matiereId/cours', component: EtudiantCoursComponent },
 
      { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

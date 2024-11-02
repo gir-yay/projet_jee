@@ -6,29 +6,28 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule] ,
-    templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
-  
+  imports: [CommonModule, RouterModule],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'], // Corrected to styleUrls
 })
-export class DashboardComponent  implements OnInit {
-  modules: any[] = []; // Changez 'notes' en 'modules'
+export class DashboardComponent implements OnInit {
+  modules: any[] = []; 
+  matieres: any[] = [];
+  isDropdownOpen = false;
+  isCoursesDropdownOpen = false;
 
   constructor(private moduleService: ModuleService) {}
 
   ngOnInit(): void {
     this.moduleService.getModules().subscribe(
       (data: any[]) => {
-        this.modules = data; // Assignez les données reçues aux modules
+        this.modules = data; 
       },
       (error: any) => {
         console.error('Erreur lors de la récupération des modules:', error);
       }
     );
   }
-
-  isDropdownOpen = false;
-  isCoursesDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

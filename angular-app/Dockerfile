@@ -16,8 +16,8 @@ RUN npm install
 # Copy the rest of your application files from ensa-gestion
 COPY ENSA-Gestion/ .
 
-# Build the Angular application
-RUN ng build --prod
+# Build the Angular application with production configuration
+RUN ng build --configuration production
 
 # Install a lightweight server to serve the static files
 RUN npm install -g http-server

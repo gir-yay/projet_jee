@@ -134,13 +134,15 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td> 1 </td>
-                              <td> Mahmoud</td>
-                              <td> Youssef </td>
-                              <td> m.youssef&#64;uae.ac.ma </td>
+                          <tr *ngFor="let etudiant of etudiants">
+                              <td> {{etudiant.id}} </td>
+                              <td> {{etudiant.nom}}</td>
+                              <td> {{etudiant.prenom}}</td>
+                              <td> {{etudiant.email}}</td>
                               <td>
-                                  <p class="status delivered">Statut</p>
+								<p [ngClass]="etudiant.status ? 'status cancelled' : 'status delivered'">
+									{{ etudiant.status ? 'Inactive' : 'Active' }}
+								  </p>
                               </td>
                           </tr>
                       </tbody>

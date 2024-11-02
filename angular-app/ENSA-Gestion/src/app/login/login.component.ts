@@ -70,6 +70,9 @@ export class LoginComponent implements AfterViewInit {
           } else if (this.userType === 'enseignant') {
             this.router.navigate(['/enseignant-dashboard']); // Adjust route as necessary
           }
+          else if (this.userType === 'directeur') {
+            this.router.navigate(['/dashboard']); // Adjust route as necessary
+          }
         } else {
           // Handle login error (show message to user)
           alert('Login failed: ' + response.message);

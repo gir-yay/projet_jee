@@ -2,6 +2,8 @@ import { Component, OnInit , ElementRef, Renderer2, AfterViewInit } from '@angul
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 import { EtudiantService } from '../services/etudiant.service';
+import { FormationService } from '../services/formation.service';
+
 
 
 @Component({
@@ -17,6 +19,8 @@ export class ListStudentsComponent   implements OnInit , AfterViewInit  {
 
   etudiants: any[] = [];
   nb_etu : any;
+
+  formations: any[] = [];
 
   openPopup(): void {
     this.isPopupOpen = true;
@@ -38,7 +42,7 @@ export class ListStudentsComponent   implements OnInit , AfterViewInit  {
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private etudiantService: EtudiantService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private etudiantService: EtudiantService, private formationService: FormationService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -52,6 +56,15 @@ ngOnInit(): void {
     (data: any[]) => {
       this.etudiants = data; 
       this.nb_etu = data.length;
+    },
+    (error: any) => {
+      console.error('Erreur lors de la récupération des modules:', error);
+    }
+  );
+
+  this.formationService.getEtudiants().subscribe(
+    (data: any[]) => {
+      this.formations = data; 
     },
     (error: any) => {
       console.error('Erreur lors de la récupération des modules:', error);

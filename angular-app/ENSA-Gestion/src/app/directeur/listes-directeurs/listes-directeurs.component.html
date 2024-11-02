@@ -9,13 +9,7 @@
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
-					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
-					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
-					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
-                    <li><a [routerLink]="['/formation']">Big Data</a></li>
-                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
-                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
+					<li *ngFor="let formation of formations"><a [routerLink]="['/formation']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>

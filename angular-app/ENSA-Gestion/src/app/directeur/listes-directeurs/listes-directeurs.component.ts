@@ -2,6 +2,8 @@ import { Component,OnInit , ElementRef, Renderer2, AfterViewInit } from '@angula
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 import { DirecteurService } from '../services/directeur.service';
+import { FormationService } from '../services/formation.service';
+
 
 
 
@@ -17,6 +19,8 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   selectedFile: File | null = null;
 
   directeurs: any[] = [];
+
+  formations: any[] = [];
 
   openPopup(): void {
     this.isPopupOpen = true;
@@ -38,7 +42,7 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService, private formationService: FormationService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -51,6 +55,15 @@ ngOnInit(): void {
   this.directeurService.getDirecteurs().subscribe(
     (data: any[]) => {
       this.directeurs = data; 
+    },
+    (error: any) => {
+      console.error('Erreur lors de la récupération des modules:', error);
+    }
+  );
+
+  this.formationService.getEtudiants().subscribe(
+    (data: any[]) => {
+      this.formations = data; 
     },
     (error: any) => {
       console.error('Erreur lors de la récupération des modules:', error);

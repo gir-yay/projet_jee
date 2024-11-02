@@ -11,7 +11,7 @@ export class FormationService {
   private apiUrl = 'http://localhost:8080/directeur';
   constructor(private httpClient: HttpClient) { }
 
-  getEtudiants(): Observable<any[]> {
+  getFormations(): Observable<any[]> {
     const token = localStorage.getItem('token'); 
     if (!token) {
       throw new Error('Aucun token trouvé');

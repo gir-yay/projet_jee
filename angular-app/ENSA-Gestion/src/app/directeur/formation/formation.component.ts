@@ -9,7 +9,7 @@ import { FormationService } from '../services/formation.service';
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule ],
   templateUrl: './formation.component.html',
   styleUrl: './formation.component.css'
 })
@@ -38,7 +38,7 @@ export class FormationComponent implements OnInit {
     this.loadScript('../../../assets/js/sidebar.js');
 
 
-    this.formationService.getEtudiants().subscribe(
+    this.formationService.getFormations().subscribe(
       (data: any[]) => {
         this.formations = data; 
         this.nb_formation = data.length;

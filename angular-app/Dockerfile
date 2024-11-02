@@ -16,8 +16,14 @@ RUN npm install
 # Copy the rest of your application files from ensa-gestion
 COPY ENSA-Gestion/ .
 
+# Build the Angular application
+RUN ng build --prod
+
+# Install a lightweight server to serve the static files
+RUN npm install -g http-server
+
 # Expose the port your app runs on
 EXPOSE 4200
 
-# Start the Angular application
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+# Start the application using the lightweight server
+CMD ["http-server", "dist/ensa-gestion", "-p", "4200", "--host", "0.0.0.0"]

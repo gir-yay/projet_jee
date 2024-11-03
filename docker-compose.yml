@@ -24,6 +24,6 @@ services:
     image: ghizlanera/angular-app:latest 
     container_name: angular-container
     ports:
-      - "4200:4200" 
+      - "4200:80" 
     depends_on:
       - spring_app

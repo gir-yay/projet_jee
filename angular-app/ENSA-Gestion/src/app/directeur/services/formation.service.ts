@@ -23,4 +23,9 @@ export class FormationService {
     
     return this.httpClient.get<any[]>(`${this.apiUrl}/formation`, { headers });
   }
+
+  ajouterFormation(formation: any): Observable<any> {
+    const data = { nom: formation.nom, nbrSemestres: formation.nbrSemestres }; 
+    return this.httpClient.post(`${this.apiUrl}/formation/ajouter`, data);
+  }
 }

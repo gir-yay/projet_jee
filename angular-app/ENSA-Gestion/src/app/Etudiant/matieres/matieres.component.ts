@@ -19,6 +19,7 @@ export class MatieresComponent implements OnInit {
   matieres: any[] = [];
   moduleId: number | null = null;
   errorMessage: string | null = null;
+  isDropdownOpen = false;
 
 
   constructor(
@@ -27,6 +28,7 @@ export class MatieresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     this.route.paramMap.subscribe(params => {
       this.moduleId = Number(params.get('id'));
       if (this.moduleId) {
@@ -43,4 +45,8 @@ export class MatieresComponent implements OnInit {
     });
   }
   
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }

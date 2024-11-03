@@ -76,24 +76,21 @@
 .card:nth-child(1):hover {
     background: linear-gradient(45deg,
             rgba(61, 119, 207, 0.411) 0%,
-            rgba(45, 109, 170, 0.589)100%),
-        url('bg.jpg');
+            rgba(45, 109, 170, 0.589)100%);
     background-size: cover;
 }
 
 .card:nth-child(2):hover {
     background: linear-gradient(45deg,
     rgba(61, 119, 207, 0.411) 0%,
-    rgba(45, 109, 170, 0.589)100%),
-        url('bg2.jpg');
+    rgba(45, 109, 170, 0.589)100%);
     background-size: cover;
 }
 
 .card:nth-child(3):hover {
     background: linear-gradient(45deg,
     rgba(61, 119, 207, 0.411) 0%,
-    rgba(45, 109, 170, 0.589)100%),
-        url('bg3.jpg');
+    rgba(45, 109, 170, 0.589)100%);
     background-size: cover;
 }*/
 .ensa-logo {

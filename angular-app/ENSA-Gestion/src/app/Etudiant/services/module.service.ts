@@ -16,7 +16,7 @@ export class ModuleService {
     if (typeof window !== 'undefined' && localStorage.getItem('token')) {
         headers = headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     }
-    return this.httpClient.get<any[]>(this.apiUrl, { headers });
+    return this.httpClient.get<any[]>(this.apiUrl);
 }
 
 getMatieres(moduleId: number): Observable<any[]> {
@@ -29,7 +29,7 @@ getMatieres(moduleId: number): Observable<any[]> {
     'Authorization': `Bearer ${token}`
   });
 
-  return this.httpClient.get<any[]>(`${this.apiUrl}/${moduleId}/matieres`, { headers });
+  return this.httpClient.get<any[]>(`${this.apiUrl}/${moduleId}/matieres`);
 }
 
 

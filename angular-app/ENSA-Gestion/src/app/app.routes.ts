@@ -55,6 +55,8 @@ export const routes: Routes = [
      { path: 'enseignant/documents-cours/:id', component: DocumentsCourComponent },
      { path: 'enseignant/ajouter-document/:id', component: AddDocumentComponent},
      { path: 'enseignant/matiere/:id/add/notes', component:  AddNotesComponent},
+
+     //Espace Etudiant
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
      { path: 'notes', component: NotesComponent },
      { path: 'matieres/:id', component: MatieresComponent },

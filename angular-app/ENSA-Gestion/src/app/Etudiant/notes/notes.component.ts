@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
 export class NotesComponent  implements OnInit {
   notes: any[] = [];
   isDropdownOpen = false;
-  isCoursesDropdownOpen = false;
   isLoading = true;
 
   constructor(private noteService: NoteService) {}
@@ -34,13 +33,10 @@ export class NotesComponent  implements OnInit {
   }
   
 
-
   toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
   }
-  toggleCoursesDropdown() {
-    this.isCoursesDropdownOpen = !this.isCoursesDropdownOpen;
-}
+
 
  
 }

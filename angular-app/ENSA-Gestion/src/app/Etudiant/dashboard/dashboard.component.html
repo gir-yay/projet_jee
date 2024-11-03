@@ -1,34 +1,16 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a [routerLink]="['etudiant/dashboard']" class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a></li>
-        <li class="divider" data-text="main">Main</li>
-        <li>
-            <a (click)="toggleCoursesDropdown()" class="dropdown-toggle">
-                <i class='bx bxs-inbox icon'></i> Cours
-            </a>        
-            <ul class="side-dropdown">
-                <li><a href="#">Technologies JEE</a></li>
-                <li><a href="#">Cours ER</a></li>
-                <li><a href="#">Urbanisme des SI</a></li>
-                <li><a href="#">Progiciel et système d'intégration</a></li>
-                <li><a href="#">Threads</a></li>
-                <li><a href="#">Management 3</a></li>
-            </ul>
+        <li><a [routerLink]="['etudiant/dashboard']" class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
         </li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li>
-            <a (click)="toggleDropdown()" class="dropdown-toggle">
-                <i class='bx bxs-notepad icon'></i> Mes examens
-                <i class='bx bx-chevron-right icon-right'></i>
-            </a>
-            <ul class="side-dropdown" [class.show]="isDropdownOpen">
-                <li><a [routerLink]="['/notes']">Mes notes</a></li>
-            </ul>
-        </li>
+        <li><a [routerLink]="['/notes']"> <i class='bx bxs-notepad icon'></i>Mes notes</a></li>
+
+    
     </ul>
     <div class="ads">
         <div class="wrapper">
+            <a href="#" class="btn-upgrade">Déconnecter</a>
             <p>ENSA <span>Tétouan</span></p>
         </div>
     </div>
@@ -71,13 +53,13 @@
                 <div class="box-container">
 
                     <div class="box" *ngFor="let module of modules">
-                         <li>
+                        <li>
                             <img src="../../images/R.png" alt="">
                             <h3>{{ module.nom }}</h3>
-                          </li>
-                          <a [routerLink]="['/matieres', module.id]" class="btn">Voir les détails</a>
-                        </div>
-                   
+                        </li>
+                        <a [routerLink]="['/matieres', module.id]" class="btn">Voir les détails</a>
+                    </div>
+
                 </div>
             </div>
         </div>

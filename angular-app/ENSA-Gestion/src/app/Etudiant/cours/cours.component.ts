@@ -15,6 +15,7 @@ export class CoursComponent implements OnInit {
   cours: any[] = [];
   matiereId: number | null = null;
   errorMessage: string | null = null;
+  isDropdownOpen = false;
 
 
   constructor(
@@ -39,5 +40,8 @@ export class CoursComponent implements OnInit {
         );
       }
     });
+  }
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }

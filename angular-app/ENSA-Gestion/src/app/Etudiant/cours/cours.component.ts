@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModuleService } from '../services/module.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cours',
@@ -24,7 +24,8 @@ export class CoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.matiereId = Number(params.get('id')); 
+      this.matiereId = Number(params.get('matiereId'));
+
       if (this.matiereId) {
         this.moduleService.getCours(this.matiereId).subscribe(
           (data: any[]) => {

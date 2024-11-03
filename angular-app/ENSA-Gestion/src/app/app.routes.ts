@@ -29,7 +29,7 @@ import { DashboardComponent as EtudiantDashboardComponent } from './Etudiant/das
 import { NotesComponent } from './Etudiant/notes/notes.component';
 import { MatieresComponent } from './Etudiant/matieres/matieres.component';
 import { CoursComponent as EtudiantCoursComponent } from './Etudiant/cours/cours.component';
-import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.component'; 
+import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.component';
 
 
 

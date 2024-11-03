@@ -72,7 +72,7 @@
 .card:hover h2 {
     font-weight: 600;
 }
-
+/*
 .card:nth-child(1):hover {
     background: linear-gradient(45deg,
             rgba(61, 119, 207, 0.411) 0%,
@@ -95,11 +95,11 @@
     rgba(45, 109, 170, 0.589)100%),
         url('bg3.jpg');
     background-size: cover;
-}
+}*/
 .ensa-logo {
-    top: 20px; 
+    top: 20px;
     left: 0;
-    width: 70px; 
+    width: 70px;
     height: auto;
 }
 
@@ -257,8 +257,8 @@ table thead tr{
     font-size: 17px;
     color: black;
   }
- 
-  
+
+
 
 @media(max-width:991px) {
     .wrapper {

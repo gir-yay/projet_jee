@@ -63,15 +63,11 @@
             <div class="container">
                 <div class="box-container">
                     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-
-                    <div *ngIf="!errorMessage"></div>
                     <div class="box" *ngFor="let matiere of matieres">
-                        <li>
-                            <h3>{{ matiere.nom }}</h3>
-                            <a  class="btn" [routerLink]="['/matieres', matiere.id, 'cours']">Voir les cours</a>
-                        </li>
+                        <img src="../../images/matiere.jpeg" alt="">
+                        <h3>{{ matiere.nom }}</h3>
+                        <a class="btn" [routerLink]="['/matieres', matiere.id, 'cours']">Voir les cours</a>
                     </div>
-
                 </div>
             </div>
         </div>

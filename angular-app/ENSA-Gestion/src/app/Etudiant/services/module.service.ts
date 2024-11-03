@@ -43,6 +43,7 @@ getCours(matiereId: number): Observable<any[]> {
     'Authorization': `Bearer ${token}` 
   });
 
-  return this.httpClient.get<any[]>(`http://localhost:8080/etudiant/modules/matieres/${matiereId}/cours`, { headers });
-}
+  const url = `${this.apiUrl}/modules/matieres/${matiereId}/cours`;
+  console.log('Fetching cours from:', url); // Affiche l'URL pour vérification
+  return this.httpClient.get<any[]>(url, { headers });}
 }

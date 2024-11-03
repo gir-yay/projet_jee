@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { ModuleService } from '../services/module.service';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,

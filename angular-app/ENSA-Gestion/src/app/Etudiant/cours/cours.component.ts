@@ -14,6 +14,8 @@ import { RouterModule } from '@angular/router';
 export class CoursComponent implements OnInit {
   cours: any[] = [];
   matiereId: number | null = null;
+  errorMessage: string | null = null;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -22,13 +24,15 @@ export class CoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.matiereId = Number(params.get('id'));
+      this.matiereId = Number(params.get('id')); 
       if (this.matiereId) {
         this.moduleService.getCours(this.matiereId).subscribe(
           (data: any[]) => {
-            this.cours = data; 
+            console.log('Données des cours récupérées:', data); // Vérification
+            this.cours = data;
           },
           (error: any) => {
+            this.errorMessage = 'Erreur lors de la récupération des cours. Veuillez réessayer.';
             console.error('Erreur lors de la récupération des cours:', error);
           }
         );

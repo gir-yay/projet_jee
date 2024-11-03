@@ -5,7 +5,8 @@
         </li>
         <li class="divider" data-text="main">Main</li>
         <li>
-            <a href="#" class="active"><i class='bx bxs-inbox icon'></i> Cours <i class='bx bx-chevron-right icon-right'></i></a>
+            <a href="#" class="active"><i class='bx bxs-inbox icon'></i> Cours <i
+                    class='bx bx-chevron-right icon-right'></i></a>
             <ul class="side-dropdown">
                 <li><a href="#">Technologies JEE</a></li>
                 <li><a href="#">Cours ER</a></li>
@@ -67,15 +68,11 @@
         <div class="info-data">
             <div class="container">
                 <div class="box-container">
-
                     <div class="box" *ngFor="let cours of cours">
-                        <li >
-                            <h3>{{ cours.nom }}</h3>
-                        </li>
-                        <a  class="btn">Voir les cours</a>
-
+                        <img src="../../images/cours.jpeg" alt="">
+                        <h3>{{ cours.nom }}</h3>
+                        <a class="btn">Voir les cours</a>
                     </div>
-                    
                 </div>
             </div>
         </div>

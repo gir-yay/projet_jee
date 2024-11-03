@@ -72,6 +72,7 @@
 
                     <div class="box" *ngFor="let module of modules">
                          <li>
+                            <img src="../../images/R.png" alt="">
                             <h3>{{ module.nom }}</h3>
                           </li>
                           <a [routerLink]="['/matieres', module.id]" class="btn">Voir les détails</a>

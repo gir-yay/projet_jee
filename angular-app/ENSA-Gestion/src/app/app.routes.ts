@@ -29,6 +29,9 @@ import { DashboardComponent as EtudiantDashboardComponent } from './Etudiant/das
 import { NotesComponent } from './Etudiant/notes/notes.component';
 import { MatieresComponent } from './Etudiant/matieres/matieres.component';
 import { CoursComponent as EtudiantCoursComponent } from './Etudiant/cours/cours.component';
+import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.component'; 
+
+
 
 
 
@@ -55,7 +58,8 @@ export const routes: Routes = [
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
      { path: 'notes', component: NotesComponent },
      { path: 'matieres/:id', component: MatieresComponent },
-     { path: 'matieres/:matiereId/cours', component: EtudiantCoursComponent },
+     { path: 'matieres/:matiereId/cours', component: EtudiantCoursComponent},
+     { path: 'matieres/cours/:id', component: CoursDetailsComponent},
 
      { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

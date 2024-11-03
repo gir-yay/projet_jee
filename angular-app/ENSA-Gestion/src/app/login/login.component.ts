@@ -64,9 +64,10 @@ export class LoginComponent implements AfterViewInit {
 
         if (response.status === 'success') {
           localStorage.setItem('token', response.access_token); // Store the access token
+          localStorage.setItem('userId', response.userId);
           // Redirect based on user type
           if (this.userType === 'etudiant') {
-            this.router.navigate(['/etudiant/dashboard']); // Adjust route as necessary
+            this.router.navigate(['/etudiant/dashboard']); 
           } else if (this.userType === 'enseignant') {
             this.router.navigate(['/enseignant-dashboard']); // Adjust route as necessary
           }

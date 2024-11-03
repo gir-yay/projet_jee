@@ -73,14 +73,12 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Id <span class="icon-arrow">&UpArrow;</span></th>
                                 <th>Matière <span class="icon-arrow">&UpArrow;</span></th>
                                 <th>Note <span class="icon-arrow">&UpArrow;</span></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let note of notes">
-                                <td>{{ note.id }}</td>
                                 <td>{{ note.matiere }}</td>
                                 <td>{{ note.value }}</td>
                             </tr>

@@ -21,6 +21,11 @@ export class LienssCourComponent implements OnInit {
   coursNom: string = '';
   selectedLien: any;
   isModalOpen: boolean = false;
+  filteredliens : any[]  = []; // For storing filtered documents
+  displayedliens : any[]  = [];
+  sortAsc = true; // Sort direction flag
+  loading: boolean = false; // Loading state
+
 
   constructor(
     private route: ActivatedRoute,
@@ -33,16 +38,29 @@ export class LienssCourComponent implements OnInit {
       this.coursId = +params.get('id')!; // Récupérer l'ID du cours
       this.loadliens(); // Charger les documents
     });
-    this.loadScript('assets/js/table.js');
+
     this.loadCoursDetails();
+    this.filteredliens = this.liens;
   }
-  
-  loadScript(src: string): void {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
-  }
+
+
+ // Search for documents based on input
+ searchTable(event: Event) {
+  const searchValue = (event.target as HTMLInputElement).value.toLowerCase();
+  this.displayedliens = this.liens.filter(lien => 
+    lien.lien.toLowerCase().includes(searchValue)
+  );
+}
+
+// Sort documents by specified column
+sortTable(column: string) {
+  this.sortAsc = !this.sortAsc; // Toggle sort direction
+  this.displayedliens.sort((a, b) => {
+    const comparison = a[column].localeCompare(b[column]); // Use localeCompare for string comparison
+    return this.sortAsc ? comparison : -comparison; // Sort based on the direction
+  });
+}
+
   // Charger les détails du cours
   loadCoursDetails(): void {
     this.liensService.getCoursById(this.coursId).subscribe(
@@ -60,12 +78,16 @@ export class LienssCourComponent implements OnInit {
     );
   }
   loadliens(): void {
+    this.loading = true; // Set loading state
     this.liensService.getLiensByCoursId(this.coursId).subscribe(
-      (data) => {
-        this.liens = data; // Stocker les documents
+      data => {
+        this.liens = data; // Store documents
+        this.displayedliens = [...this.liens]; // Start with all documents displayed
+        this.loading = false; // Reset loading state
       },
-      (error) => {
-        console.error('Erreur lors de la récupération des documents', error);
+      error => {
+        console.error('Error fetching documents', error);
+        this.loading = false; // Reset loading state
       }
     );
   }
@@ -75,6 +97,7 @@ export class LienssCourComponent implements OnInit {
         const index = this.liens.indexOf(lien);
         if (index > -1) {
           this.liens.splice(index, 1); // Supprime le lien localement
+          this.displayedliens.splice(index, 1);
         }
         console.log(`Lien ${lien.lien} supprimé avec succès.`);
         // Redirige vers la même page pour actualiser le contenu
@@ -93,6 +116,7 @@ export class LienssCourComponent implements OnInit {
         const index = this.liens.findIndex(c => c.id === this.selectedLien.id);
         if (index > -1) {
           this.liens[index] = this.selectedLien; // Mettez à jour le cours dans le tableau
+          this.displayedliens[index] = this.selectedLien;
         }
         console.log('Lien mis à jour avec succès:', response);
         this.isModalOpen = false; // Fermez le modal après la mise à jour

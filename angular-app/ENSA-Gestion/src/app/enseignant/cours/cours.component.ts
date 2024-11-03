@@ -19,6 +19,7 @@ export class CoursComponent implements OnInit {
   selectedCour: any; // Pour stocker le cours sélectionné
   isModalOpen: boolean = false; // Pour contrôler l'affichage du modal
   matieres: any[] = [];
+  MatiereNom  : string ='';
 
   constructor(
     private route: ActivatedRoute, 
@@ -38,6 +39,7 @@ export class CoursComponent implements OnInit {
       }
     });
     this.loadMatieres();
+    this.loadMatieresDetails();
   }
   loadMatieres(): void {
     this.matiereService.getMatieres().subscribe(
@@ -100,5 +102,21 @@ export class CoursComponent implements OnInit {
       groups.push(this.cours.slice(i, i + 4));
     }
     return groups;
+  }
+  // Charger les détails du matiere
+  loadMatieresDetails(): void {
+    this.matiereService.getMatierById(this.matiereId).subscribe(
+      (data) => {
+        console.log('Détails du matiere:', data); 
+        if (data && data.nom) { // Assurez-vous que le champ `nom` existe
+          this.MatiereNom = data.nom;
+        } else {
+          console.warn('Le champ nom est absent dans la réponse', data);
+        }
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des détails du Matiere:', error);
+      }
+    );
   }
 }

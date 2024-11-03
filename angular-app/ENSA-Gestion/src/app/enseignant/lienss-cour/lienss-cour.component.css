@@ -617,6 +617,7 @@ tbody tr.hide td img {
   background-color: #d893a3;
   color: #b30021;
   cursor: pointer;
+  padding: 6px;
 }
 
 .status.pending {

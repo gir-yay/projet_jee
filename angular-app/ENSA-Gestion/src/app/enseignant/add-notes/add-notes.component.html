@@ -4,10 +4,10 @@
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Bonjour Cher Professeur !">Bonjour Cher Professeur !</li>
+			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-smileee icon'></i> Cher Professeur !</a></li>
+			<li class="divider" data-text="Bonjour Cher Professeur !">Bienvenue dans votre espace </li>
 			
-			<li class="divider" data-text="Nom Prenom">Nom Prenom </li>
+			<li class="divider" data-text="">de gestion des cours et notes </li>
 			
 		</ul>
 		<div class="ads">
@@ -41,12 +41,10 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">{{ coursNom }}</h1>
+			<h1 class="title">Notes</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Cours</a></li>
-				<li class="divider">/</li>
-				<li><a  [routerLink]="['/enseignant/cours', courId]" >{{ coursNom }}</a></li>
-                <li><a  [routerLink]="['/enseignant/cours', courId]" >Notes</a></li>
+				<li ><a [routerLink]="['/matiere',matiereId,'cours']">{{ MatiereNom }} </a></li>
+				<li class="divider">/ Ajouter les notes</li>
 			</ul>
 			<div class="info-data">
 			
@@ -62,13 +60,13 @@
             <!-- formulaire pour ajouter une formation-->
 			 <div class="container">
     <!-- Title section -->
-    <div class="title">Ajouter un cours</div>
+    <div class="title">Ajouter Les notes</div>
     <div class="content">
-		<form (ngSubmit)="ajouterCour()">
+		<form (ngSubmit)="onSubmit()" #noteForm="ngForm">
 			<div class="user-details">
 			  <div class="input-box">
-				<span class="details">Nom</span>
-				<input type="file" placeholder="Le nom du Cours" [(ngModel)]="" name="file" required>
+				<span class="details">Les notes</span>
+				<input type="file"name="file" (change)="onFileSelected($event)" required>
 			  </div>
 			</div>
 			<!-- Submit button -->

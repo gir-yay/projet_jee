@@ -21,6 +21,7 @@ import { LienssCourComponent } from './enseignant/lienss-cour/lienss-cour.compon
 import { AddCoursComponent } from './enseignant/add-cours/add-cours.component';
 import { AddLienCoursComponent} from './enseignant/add-lien-cours/add-lien-cours.component';
 import { AddDocumentComponent} from './enseignant/add-document/add-document.component';
+import { AddNotesComponent} from './enseignant/add-notes/add-notes.component';
 
 
 // Espace etudiant
@@ -44,12 +45,13 @@ export const routes: Routes = [
      { path: 'ajouter-formation', component: AddFormationComponent },
      { path: 'enseignant-dashboard', component: DashboardProfComponent },
      { path: 'matiere/:id/cours', component: CoursComponent },
-     { path: 'enseignant/matiere/:matiereId/cours/add', component: AddCoursComponent },
+     { path: 'enseignant/matiere/:id/cours/add', component: AddCoursComponent },
      { path: 'enseignant/cours/:id', component: DetailCoursComponent},
      { path: 'enseignant/liens-cours/:id', component: LienssCourComponent},
      { path: 'enseignant/ajouter-lien/:id', component: AddLienCoursComponent},
      { path: 'enseignant/documents-cours/:id', component: DocumentsCourComponent },
      { path: 'enseignant/ajouter-document/:id', component: AddDocumentComponent},
+     { path: 'enseignant/matiere/:id/add/notes', component:  AddNotesComponent},
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
      { path: 'notes', component: NotesComponent },
      { path: 'matieres/:id', component: MatieresComponent },

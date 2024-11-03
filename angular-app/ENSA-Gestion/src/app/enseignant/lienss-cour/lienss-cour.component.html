@@ -3,10 +3,10 @@
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Bonjour Cher Professeur !">Bonjour Cher Professeur !</li>
+			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-smileee icon'></i> Cher Professeur !</a></li>
+			<li class="divider" data-text="Bonjour Cher Professeur !">Bienvenue dans votre espace </li>
 			
-			<li class="divider" data-text="Nom Prenom">Nom Prenom </li>
+			<li class="divider" data-text="">de gestion des cours et notes </li>
 			
 		</ul>
 		<div class="ads">
@@ -64,7 +64,7 @@
                     <h1>Liens</h1>
                     <a class="btn btn-primary" [routerLink]="['/enseignant/ajouter-lien', coursId]">Ajouter Un lien</a>
                     <div class="input-group">
-                        <input type="search" placeholder="Rechercher...">
+                        <input type="search" placeholder="Rechercher..."(input)="searchTable($event)">
                     </div>
                    
                 </section>
@@ -72,13 +72,13 @@
                     <table>
 						<thead>
 						  <tr>
-							<th>Nom<span class="icon-arrow">&UpArrow;</span></th>
+							<th (click)="sortTable('nom')">Nom<span class="icon-arrow">&UpArrow;</span></th>
 							<th>Modifier</th>
 							<th>Supprimer</th>
 						  </tr>
 						</thead>
 						<tbody>
-						  <tr *ngFor="let lien of liens">
+						  <tr *ngFor="let lien of displayedliens">
 							<td>{{ lien.lien }}</td> <!-- Affiche le nom du document -->
 							<td>
 							  <p ><a class="btn btn-primary" (click)="openModal(lien)">Modifier</a></p>

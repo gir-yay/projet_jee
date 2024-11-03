@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursService } from '../../services/cours.service';
 import { RouterModule } from '@angular/router'; 
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-detail-cours',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule,FormsModule],
   templateUrl: './detail-cours.component.html',
   styleUrl: './detail-cours.component.css'
 })
 export class DetailCoursComponent  implements OnInit {
   courId: number =0;
   coursNom: string = '';
+  matiereId :number =0;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +34,9 @@ export class DetailCoursComponent  implements OnInit {
     this.courService.getCoursById(this.courId).subscribe(
       (data) => {
         console.log('Détails du cours:', data); // Débogage : vérifiez la réponse de l'API
-        if (data && data.nom) { // Assurez-vous que le champ `nom` existe
+        if (data && data.nom ) { // Assurez-vous que le champ `nom` existe
           this.coursNom = data.nom;
+          this.matiereId = data.matiere_id;
         } else {
           console.warn('Le champ nom est absent dans la réponse', data);
         }

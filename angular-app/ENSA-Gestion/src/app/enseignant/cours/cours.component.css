@@ -766,3 +766,12 @@ main .content-data .head h3 {
     max-width: 500px;
     margin: auto; 
 }
+.ajouter{
+	margin: 10px;
+	margin-left: 80px;
+	background-color: #0e4894;
+	color: #dee2e6;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 10px;
+}

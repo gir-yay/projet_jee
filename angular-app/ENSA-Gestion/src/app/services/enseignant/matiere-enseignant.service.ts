@@ -15,4 +15,9 @@ export class MatiereEnseignantService {
     return this.http.get<any[]>(this.apiUrl, {
     });
   }
+  getMatierById(matierId: number): Observable<any> {
+
+    return this.http.get(`${this.apiUrl}/${matierId}`);
+  }
+
 }

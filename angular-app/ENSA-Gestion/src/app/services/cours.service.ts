@@ -23,6 +23,7 @@ export class CoursService {
    updateCour(courId: number, courData: any): Observable<any> {
     return this.http.post(`${this.baseApiUrl}/cours/modifier/${courId}`, courData); 
   }
+  /*========================================= Les Cours======================= */
   //ajouter cour
   ajouterCour(cours: any, matiereId: number): Observable<any> {
     const data = { nom: cours.nom, matiereId: matiereId }; 
@@ -36,14 +37,11 @@ export class CoursService {
   getDocumentsByCoursId(coursId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseApiUrl}/cours/${coursId}/documents`); 
   }
+  
+  /*========================================= Les Liens======================= */
   // liens
   getLiensByCoursId(coursId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseApiUrl}/cours/${coursId}/liens`); 
-  }
-  //ajouter document 
-  ajouterDocument(document: String, coursId: number): Observable<any> {
-    const data = { nom:document, coursId: coursId };
-    return this.http.post(`${this.baseApiUrl}/cours/documents/ajouter`, data); 
   }
   // Méthode pour ajouter un lien
   ajouterLien(lien: string, coursId: number): Observable<any> {
@@ -62,4 +60,28 @@ export class CoursService {
   supprimerDocument(documentId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseApiUrl}/cours/documents/${documentId}`);
   }
+  
+  /*========================================= Les Documents======================= */
+  
+  //ajouter document 
+  ajouterDocument(nom: string, courId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    
+    // Créez un objet avec les données à envoyer
+    const documentData = {
+        nom: nom,
+        coursId: courId // Assurez-vous que cela correspond à votre DTO
+    };
+    console.log('Document Data:', documentData);
+    formData.append('data', new Blob([JSON.stringify(documentData)], { type: 'application/json' }));
+    formData.append('file', file);
+    return this.http.post(`${this.baseApiUrl}/cours/documents/ajouter`, formData);
+}
+ajouterNotes(file: File, matiereId: number): Observable<any> {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('matiereId', matiereId.toString());
+
+  return this.http.post<any>(`${this.baseApiUrl}/notes/ajouter`, formData);
+}
 }

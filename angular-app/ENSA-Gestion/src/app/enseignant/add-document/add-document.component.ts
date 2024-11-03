@@ -16,29 +16,62 @@ import { Router} from '@angular/router';
 })
 export class AddDocumentComponent implements OnInit {
   courId: number = 0;
+  coursNom: string = '';
   nomDocument: string = ''; // Nom du document
   urlDocument: string = ''; // URL ou chemin du document
+  selectedFile: File | null = null;
 
-  constructor(private route: ActivatedRoute, private coursService: CoursService, private router: Router) {}
+  constructor(private route: ActivatedRoute, 
+    private coursService: CoursService, 
+    private router: Router) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.courId = +params.get('id')!; // Récupérer l'ID du cours
     });
+    this.loadCoursDetails();
   }
-  ajouterDocument(): void {
-    this.coursService.ajouterDocument(this.nomDocument, this.courId).subscribe(
-      response => {
-        console.log('Réponse du serveur:', response);
-        if (response.status === 'success') {
-          console.log('Document ajouté avec succès');
-          // redirection ou autre traitement après ajout
+    // Gestion de la sélection du fichier
+    onFileSelected(event: any) {
+      this.selectedFile = event.target.files[0];
+    }
+    ajouterDocument() {
+      if (this.selectedFile && this.nomDocument && this.courId) {
+        console.log('Document à ajouter:', {
+          nom: this.nomDocument,
+          courId: this.courId,
+          file: this.selectedFile // Assurez-vous que c'est un objet File
+        });
+        this.coursService.ajouterDocument(this.nomDocument, this.courId, this.selectedFile).subscribe(
+          (response: any) => {
+            console.log('Réponse du serveur:', response);
+            if (response.status === 'success') {
+              alert('Document ajouté avec succès');
+            } else {
+              alert(`Erreur: ${response.message}`);
+            }
+          },
+          (error) => {
+            console.error('Erreur lors de l\'ajout du document:', error);
+          }
+        );
+      } else {
+        console.error('Tous les champs sont requis');
+      }
+    }
+     // Charger les détails du cours
+  loadCoursDetails(): void {
+    this.coursService.getCoursById(this.courId).subscribe(
+      (data) => {
+        console.log('Détails du cours:', data); // Débogage : vérifiez la réponse de l'API
+        if (data && data.nom ) { // Assurez-vous que le champ `nom` existe
+          this.coursNom = data.nom;
         } else {
-          console.error('Erreur lors de l\'ajout du document :', response.message);
+          console.warn('Le champ nom est absent dans la réponse', data);
         }
       },
-      error => {
-        console.error('Erreur lors de la requête vers le serveur', error);
+      (error) => {
+        console.error('Erreur lors de la récupération des détails du cours:', error);
       }
     );
   }

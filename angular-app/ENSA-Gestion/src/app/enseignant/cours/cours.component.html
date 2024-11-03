@@ -3,11 +3,10 @@
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Bonjour Cher Professeur !">Bonjour Cher Professeur !</li>
+			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-smileee icon'></i> Cher Professeur !</a></li>
+			<li class="divider" data-text="Bonjour Cher Professeur !">Bienvenue dans votre espace </li>
 			
-			<li class="divider" data-text="Nom Prenom">Nom Prenom </li>
-			
+			<li class="divider" data-text="">de gestion des cours et notes </li>
 			
 		</ul>
 		<div class="ads">
@@ -43,9 +42,8 @@
 		<main>
 			<h1 class="title">Cours</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Matiers</a></li>
-				<li class="divider">/ Nom-Matiere /</li>
-				<li><a href="#" class="active">Cours</a></li>
+				<li ><a [routerLink]="['/enseignant-dashboard']">Matières</a></li>
+				<li class="divider">/ {{ MatiereNom }} </li>
 			</ul>
 			<div class="info-data">
 			
@@ -56,9 +54,9 @@
       <!-- tableau-->
 			<div class="data">
 				<div class="content-data">
-					<a [routerLink]="['/enseignant/matiere', matiereId, 'cours', 'add']">Ajouter un cours</a>
+					<a  class="ajouter"[routerLink]="['/enseignant/matiere', matiereId, 'cours', 'add']">Ajouter un cours</a>
 				
-					<a [routerLink]="['/enseignant/matiere', matiereId, 'cours', 'add']">Ajouter les Notes</a>
+					<a class="ajouter"[routerLink]="['/enseignant/matiere', matiereId, 'add','notes']">Ajouter les Notes</a>
 					<div class="head">
 					
             <!--  pour afficher detail slider de la formation-->
@@ -108,7 +106,7 @@
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h5 class="modal-title">Modifier le Cours: {{ selectedCour?.nom }}</h5>
+		  <h5 class="modal-title">Modifier le Cours</h5>
 		  <button type="button" class="close" (click)="isModalOpen = false">&times;</button>
 		</div>
 		<div class="modal-body">

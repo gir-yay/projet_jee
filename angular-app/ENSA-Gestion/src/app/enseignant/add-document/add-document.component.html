@@ -41,10 +41,10 @@
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title">Documents</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Home</a></li>
-				<li class="divider">/ Nom de cours/ </li>
+				<li><a [routerLink]="['/enseignant/documents-cours', courId]">Documents</a></li>
+				<li><a [routerLink]="['/enseignant/cours', courId]">/ {{ coursNom }}/</a> </li>
 				<li><a href="#" class="active">Ajouter un Document</a></li>
 			</ul>
 			<div class="info-data">
@@ -72,7 +72,7 @@
           </div>
 		  <div class="input-box">
             <span class="details">Fichier</span>
-            <input type="file" id="urlDocument" [(ngModel)]="urlDocument" name="urlDocument"  placeholder="Le Document" required>
+			<input type="file" id="urlDocument" (change)="onFileSelected($event)" required>
           </div>
          
         </div>

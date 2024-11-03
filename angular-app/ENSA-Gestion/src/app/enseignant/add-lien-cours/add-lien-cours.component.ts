@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class AddLienCoursComponent implements OnInit {
   courId: number = 0;
   nomLien: string = ''; // Nom du lien
+  coursNom: string = '';
 
   constructor(private route: ActivatedRoute, private coursService: CoursService, private router: Router) {}
 
@@ -24,6 +25,7 @@ export class AddLienCoursComponent implements OnInit {
       this.courId = +params.get('id')!;
       console.log('ID du cours:', this.courId);
     });
+    this.loadCoursDetails();
   }
 
   ajouterLien(): void {
@@ -36,6 +38,22 @@ export class AddLienCoursComponent implements OnInit {
       },
       error => {
         console.error("Erreur lors de l'ajout du lien", error);
+      }
+    );
+  }
+  // Charger les détails du cours
+  loadCoursDetails(): void {
+    this.coursService.getCoursById(this.courId).subscribe(
+      (data) => {
+        console.log('Détails du cours:', data); // Débogage : vérifiez la réponse de l'API
+        if (data && data.nom ) { // Assurez-vous que le champ `nom` existe
+          this.coursNom = data.nom;
+        } else {
+          console.warn('Le champ nom est absent dans la réponse', data);
+        }
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des détails du cours:', error);
       }
     );
   }

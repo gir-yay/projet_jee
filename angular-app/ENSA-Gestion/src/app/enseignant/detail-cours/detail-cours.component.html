@@ -3,10 +3,10 @@
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
 		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Bonjour Cher Professeur !">Bonjour Cher Professeur !</li>
+			<li><a [routerLink]="['/dashboard']" class="active" ><i class='bx bxs-smileee icon'></i> Cher Professeur !</a></li>
+			<li class="divider" data-text="Bonjour Cher Professeur !">Bienvenue dans votre espace </li>
 			
-			<li class="divider" data-text="Nom Prenom">Nom Prenom </li>
+			<li class="divider" data-text="">de gestion des cours et notes </li>
 			
 		</ul>
 		<div class="ads">
@@ -42,8 +42,8 @@
 		<main>
 			<h1 class="title">{{ coursNom }}</h1>
 			<ul class="breadcrumbs">
-				<li><a href="#">Cours</a></li>
-				<li class="divider">/</li>
+				<li><a [routerLink]="['/enseignant-dashboard']">Matières</a></li>
+				<li class="divider"> /</li>
 				<li><a  [routerLink]="['/enseignant/cours', courId]" >{{ coursNom }}</a></li>
 			</ul>
 			<div class="info-data">
@@ -73,11 +73,7 @@
                         <span class="details">  <a [routerLink]="['/enseignant/liens-cours', courId]">Liens</a></span>
                        
                       </div>
-					  <div class="input-box">
-                        <span class="details">  <a [routerLink]="['/enseignant/liens-cours', courId]">Notes</a></span>
-                       
-                      </div>
-                     
+					  
                     </div>
                     <!-- Submit button -->
                   </form>

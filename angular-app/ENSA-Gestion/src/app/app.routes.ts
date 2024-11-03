@@ -38,6 +38,8 @@ import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.co
 export const routes: Routes = [
      { path: 'login', component: LoginComponent },
      // { path: 'login-admin', component: LoginAdminComponent },
+
+     //========================== espace directeur============
      { path: 'dashboard', component: DashboardComponent },
      { path: 'formation', component: FormationComponent },
      { path: 'ajouter-module', component: AddModuleComponent },
@@ -46,15 +48,27 @@ export const routes: Routes = [
      { path: 'List-etudiants', component: ListStudentsComponent },
      { path: 'List-directeurs', component: ListesDirecteursComponent },
      { path: 'ajouter-formation', component: AddFormationComponent },
+
+     // =================Espace Professeur=================
+     // dashboard Enseignant
      { path: 'enseignant-dashboard', component: DashboardProfComponent },
+     // Cours par matiere de l enseignant
      { path: 'matiere/:id/cours', component: CoursComponent },
+     // ajouter un cour à une matiere
      { path: 'enseignant/matiere/:id/cours/add', component: AddCoursComponent },
+     // detail d un cour ( pour consulter les liens et documents de ce cour par le prof)
      { path: 'enseignant/cours/:id', component: DetailCoursComponent},
+     // les liens d un cours
      { path: 'enseignant/liens-cours/:id', component: LienssCourComponent},
+     // ajouter un lien cours
      { path: 'enseignant/ajouter-lien/:id', component: AddLienCoursComponent},
+     //les documents d un cour
      { path: 'enseignant/documents-cours/:id', component: DocumentsCourComponent },
+     //ajouter un document
      { path: 'enseignant/ajouter-document/:id', component: AddDocumentComponent},
+     //ajouter les notes
      { path: 'enseignant/matiere/:id/add/notes', component:  AddNotesComponent},
+//===========================================================================================
 
      //Espace Etudiant
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },

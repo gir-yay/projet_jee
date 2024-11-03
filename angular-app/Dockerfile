@@ -1,16 +1,19 @@
 # Use a Node.js version that is compatible with Angular CLI
-FROM node:latest as node
+FROM node:latest
 
+RUN mkdir /app
 # Set the working directory to the Angular app's directory
 WORKDIR /app
 
-COPY ENSA-Gestion/ /app
+COPY ENSA-Gestion/* /app
 
 RUN npm install
 
-RUN npm run build --prod
+RUN npm install -g @angular/cli
+RUN yarn  install
+
+CMD ["ng", "serve", "--host", "0.0.0.0", ]
 
 
 
-from nginx:alpine
-COPY --from=node /app/dist/ENSA-Gestion /usr/share/nginx/html
+

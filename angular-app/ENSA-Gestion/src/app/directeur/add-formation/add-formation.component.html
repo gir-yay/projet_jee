@@ -8,13 +8,7 @@
 			<li>
 				<a href="#" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
-					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
-					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
-					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
-                    <li><a [routerLink]="['/formation']">Big Data</a></li>
-                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
-                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
+					<li *ngFor="let formation of formations"><a [routerLink]="['/formation']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>
@@ -82,25 +76,21 @@
     <div class="title">Ajouter une formation</div>
     <div class="content">
       <!-- Registration form -->
-      <form action="#">
-        <div class="user-details">
-          <!-- Input for Full Name -->
-          <div class="input-box">
-            <span class="details">Nom</span>
-            <input type="text" placeholder="Le nom du formation" required>
-          </div>
-          <!-- Input for Username -->
-          <div class="input-box">
-            <span class="details">Nombre de semestre </span>
-            <input type="number" min=2 placeholder="Nombre de semestre" required>
-          </div>
-         
-        </div>
-        <!-- Submit button -->
-        <div class="button">
-          <input type="submit" value="Ajouter">
-        </div>
-      </form>
+	  <form (ngSubmit)="ajouterFormation()">
+		<div class="user-details">
+		  <div class="input-box">
+			<span class="details">Nom</span>
+			<input type="text" [(ngModel)]="formation.nom" name="nom" placeholder="Le nom du formation" required>
+		  </div>
+		  <div class="input-box">
+			<span class="details">Nombre de semestre</span>
+			<input type="number" [(ngModel)]="formation.nbrSemestres" name="nombreDeSemestre" min="2" placeholder="Nombre de semestre" required>
+		  </div>
+		</div>
+		<div class="button">
+		  <input type="submit" value="Ajouter">
+		</div>
+	  </form>
     </div>
   </div>
             

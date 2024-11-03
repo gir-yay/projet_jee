@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
     );
 
-    this.formationService.getEtudiants().subscribe(
+    this.formationService.getFormations().subscribe(
       (data: any[]) => {
         this.formations = data; 
         this.nb_formation = data.length;

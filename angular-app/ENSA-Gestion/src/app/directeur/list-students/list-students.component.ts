@@ -62,7 +62,7 @@ ngOnInit(): void {
     }
   );
 
-  this.formationService.getEtudiants().subscribe(
+  this.formationService.getFormations().subscribe(
     (data: any[]) => {
       this.formations = data; 
     },

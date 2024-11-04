@@ -79,7 +79,7 @@
 						</thead>
 						<tbody>
 						  <tr *ngFor="let lien of displayedliens">
-							<td>{{ lien.lien }}</td> <!-- Affiche le nom du document -->
+							<td><a class="lien">{{ lien.lien }}</a></td> <!-- Affiche le nom du document -->
 							<td>
 							  <p ><a class="btn btn-primary" (click)="openModal(lien)">Modifier</a></p>
 							</td>

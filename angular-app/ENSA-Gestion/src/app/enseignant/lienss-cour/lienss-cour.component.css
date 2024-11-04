@@ -877,3 +877,7 @@ thead th.active,tbody td.active {
     max-width: 500px; /* Largeur maximale */
     margin: auto; /* Centrer le contenu du modal */
 }
+.lien{
+	color: #0C5FCD;
+	cursor: pointer;
+}

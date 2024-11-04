@@ -17,12 +17,13 @@ export class DocumentsCourComponent  implements OnInit {
   coursId: number=0;
   documents: any[] = []; // Pour stocker les documents récupérés
   coursNom: string = '';
-  selecteddocument: any;
   isModalOpen: boolean = false;
   filteredDocuments : any[]  = []; // For storing filtered documents
   displayedDocuments : any[]  = [];
   sortAsc = true; // Sort direction flag
   loading: boolean = false; // Loading state
+  selectedDocument: any = { nom: '', coursId: null, fileName: '' };
+  selectedFile: File | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -99,8 +100,7 @@ sortTable(column: string) {
           this.displayedDocuments.splice(index, 1);
         }
         console.log(`Document ${document.nom} supprimé avec succès.`);
-        // Redirige vers la même page pour actualiser le contenu
-        this.router.navigateByUrl('/documents-cour/' + this.coursId);
+        this.router.navigateByUrl('/enseignant/documents-cours/' + this.coursId);
       },
       (error) => {
         console.error('Erreur lors de la suppression du lien:', error); // Affichez l'erreur
@@ -109,25 +109,41 @@ sortTable(column: string) {
   }
   
   //modifier document (a modifier )
-  updatedocument(): void {
-    console.log('Selected lien:', this.selecteddocument); // Ajoutez cette ligne pour vérifier les données
-    this.documentsService.updatelien(this.selecteddocument.id, this.selecteddocument).subscribe(
-      (response) => {
-        const index = this.documents.findIndex(c => c.id === this.selecteddocument.id);
-        if (index > -1) {
-          this.documents[index] = this.selecteddocument; // Mettez à jour le cours dans le tableau
-          this.displayedDocuments[index] = this.selecteddocument;
+  
+  openModal(document: any) {
+    this.selectedDocument = { ...document }; // Cloner l'objet document pour l'édition
+    this.selectedFile = null; // Réinitialiser le fichier sélectionné
+    this.isModalOpen = true;
+  }
+
+
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0]; // Stocker le fichier sélectionné
+    }
+  }
+
+  updateDocument() {
+    const documentId = this.selectedDocument.id; // Supposons que l'ID soit dans l'objet sélectionné
+    const nom = this.selectedDocument.nom;
+    const coursId = this.selectedDocument.coursId;
+
+    this.documentsService.updateDocument(documentId, nom, this.coursId, this.selectedFile).subscribe(
+      (response: any) => {
+        console.log('Réponse du serveur:', response);
+        if (response.status === 'success') {
+          console.log('doccument modifié avec succés');
+          this.isModalOpen = false; // Fermer le modal
+          alert('Document modifié avec succès');
+          this.loadDocuments();
+        } else {
+          alert(`Erreur: ${response.message}`);
         }
-        console.log('Lien mis à jour avec succès:', response);
-        this.isModalOpen = false; // Fermez le modal après la mise à jour
       },
       (error) => {
-        console.error('Erreur lors de la mise à jour du cours:', error);
+        console.error('Erreur lors de la modification du document:', error);
       }
     );
   }
-  openModal(document: any): void {
-    this.selecteddocument = { ...document }; 
-    this.isModalOpen = true; 
-  }
+
 }

@@ -67,6 +67,29 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }
+    boolean accessGranted = false;
+  
+      switch (role.toLowerCase()) {
+          case "directeur":
+              accessGranted = request.getServletPath().startsWith("/directeur");
+              break;
+          case "enseignant":
+              accessGranted = request.getServletPath().startsWith("/enseignant");
+              break;
+          case "etudiant":
+              accessGranted = request.getServletPath().startsWith("/etudiant");
+              break;
+          default:
+              break;
+      }
+  
+      if (!accessGranted) {
+        System.out.println("\n\n\n Request: " + request.getServletPath() + "\n\n\n");
+        System.out.println("\n\n\nRole: " + role + "\n\n\n");
+
+          response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+          return;
+      }
     filterChain.doFilter(request, response);
   }
 }

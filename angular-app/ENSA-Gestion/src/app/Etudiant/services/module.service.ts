@@ -1,5 +1,5 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -118,7 +118,9 @@ export class ModuleService {
   private baseUrl = 'http://localhost:8080/etudiant/modules/matieres/cours/documents'; 
 
    //================================== télécharger un document ==================================
-   downloadDocument(documentId: number): Observable<Blob> {
-    return this.httpClient.get(`${this.baseUrl}/etudiant/modules/matieres/cours/documents/download/${documentId}`, { responseType: 'blob' });
+   downloadDocument(documentId: number): Observable<HttpResponse<Blob>> {
+    const url = `http://localhost:8080/etudiant/modules/matieres/cours/documents/download/${documentId}`;
+    
+    return this.httpClient.post<Blob>(url, null, {responseType: 'blob' as 'json', observe: 'response' });
   }
 }

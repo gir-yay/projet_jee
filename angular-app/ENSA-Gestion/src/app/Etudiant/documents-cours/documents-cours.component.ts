@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ModuleService } from '../services/module.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-documents-cours',
@@ -61,15 +63,22 @@ export class DocumentsCoursComponent implements OnInit {
 
   downloadDocument(documentId: number) {
     this.moduleService.downloadDocument(documentId).subscribe({
-      next: (blob: Blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `document_${documentId}.pdf`; // Nom du fichier
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url); // Libère l'URL blob après téléchargement
+      next: (response: HttpResponse<Blob>) => {
+        const blob = response.body; // Récupérer le blob depuis le corps de la réponse
+        
+        if (blob && blob.size > 0) { // Vérifiez que le blob a des données
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `document_${documentId}.pdf`; // Nom du fichier
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url); // Libérer l'URL blob après téléchargement
+        } else {
+          console.error('Le blob est vide. Vérifiez la réponse du serveur.');
+          alert('Erreur : le document est vide ou n’a pas pu être téléchargé.');
+        }
       },
       error: (error) => {
         console.error('Erreur lors du téléchargement:', error);
@@ -77,5 +86,7 @@ export class DocumentsCoursComponent implements OnInit {
       }
     });
   }
+  
+  
   
 }

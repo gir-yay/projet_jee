@@ -14,6 +14,7 @@ public class UtilisateurMapper {
         utilisateurDto.setNom(utilisateur.getNom());
         utilisateurDto.setPrenom(utilisateur.getPrenom());
         utilisateurDto.setEmail(utilisateur.getEmail());
+        utilisateurDto.setStatus(utilisateur.isStatus());
         return utilisateurDto;
     }
 
@@ -23,6 +24,8 @@ public class UtilisateurMapper {
         utilisateur.setNom(utilisateurDto.getNom());
         utilisateur.setPrenom(utilisateurDto.getPrenom());
         utilisateur.setEmail(utilisateurDto.getEmail());
+        utilisateur.setStatus(utilisateurDto.isStatus());
         return utilisateur;
     }
 }
+

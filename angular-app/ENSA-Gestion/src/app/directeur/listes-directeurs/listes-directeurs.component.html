@@ -9,7 +9,7 @@
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li *ngFor="let formation of formations"><a [routerLink]="['/formation']">{{formation.nom}}</a></li>
+					<li *ngFor="let formation of formations"><a [routerLink]="['/formation', formation.id , 'modules']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>
@@ -101,7 +101,7 @@
             <main class="table" id="customers_table">
               <section class="table__header">
                   <h1>Liste des directeurs</h1>
-				  <button class="btn btn-primary" (click)="openPopup()">Mis à jour</button>
+				  <button class="btn btn-primary" (click)="openPopup()">Mettre à jour</button>
 
                   <div class="input-group">
                       <input type="search" placeholder="Rechercher...">

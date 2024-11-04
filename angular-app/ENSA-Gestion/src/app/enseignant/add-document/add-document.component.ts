@@ -46,7 +46,8 @@ export class AddDocumentComponent implements OnInit {
           (response: any) => {
             console.log('Réponse du serveur:', response);
             if (response.status === 'success') {
-              alert('Document ajouté avec succès');
+              //alert('Document ajouté avec succès');
+              this.router.navigateByUrl('/enseignant/documents-cours/' + this.courId);
             } else {
               alert(`Erreur: ${response.message}`);
             }

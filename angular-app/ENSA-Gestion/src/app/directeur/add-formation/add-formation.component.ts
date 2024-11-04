@@ -76,10 +76,10 @@ export class AddFormationComponent implements   AfterViewInit, OnInit {
     this.formationService.ajouterFormation(this.formation).subscribe(
       (response) => {
         console.log('Cours ajouté avec succès:', response);
-        this.router.navigateByUrl('/directeur/utilisateur/enseignants');
+        this.router.navigateByUrl('List-directeurs');
       },
       (error) => {
-        console.error("Erreur lors de l'ajout du cours:", error);
+        console.error("Erreur lors de l'ajout de la formation:", error);
       }
     );
   }

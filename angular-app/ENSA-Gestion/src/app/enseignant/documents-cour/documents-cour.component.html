@@ -114,16 +114,21 @@
 		  <button type="button" class="close" (click)="isModalOpen = false">&times;</button>
 		</div>
 		<div class="modal-body">
-			<form (ngSubmit)="updatedocument()">
+			<form (ngSubmit)="updateDocument()">
 				<div class="mb-3">
 				  <label for="nom" class="form-label">Nom:</label>
-				  <input id="nom" [(ngModel)]="selecteddocument.nom" name="nom" class="form-control" required />
+				  <input id="nom" [(ngModel)]="selectedDocument.nom" name="nom" class="form-control" required />
 				</div>
 				<div class="mb-3">
 					<label for="file" class="form-label">Document:</label>
-					<input id="file" type="file" [(ngModel)]="selecteddocument.file" name="file" class="form-control" required />
+					<input
+					id="file"
+					type="file"
+					(change)="onFileSelected($event)"
+					name="file"
+					class="form-control"/>
 				  </div>
-				<button type="submit" class="btn btn-primary">Mettre à jour le lien</button>
+				<button type="submit" class="btn btn-primary">Mettre à jour le document</button>
 				<button type="button" class="btn btn-secondary" (click)="isModalOpen = false">Annuler</button>
 			  </form>
 		</div>

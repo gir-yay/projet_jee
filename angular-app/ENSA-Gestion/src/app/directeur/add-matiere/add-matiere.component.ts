@@ -1,10 +1,11 @@
 import { Component, OnInit , ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
+import { FormationComponent } from '../formation/formation.component';
 
 @Component({
   selector: 'app-add-matiere',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, FormationComponent],
   templateUrl: './add-matiere.component.html',
   styleUrl: './add-matiere.component.css'
 })

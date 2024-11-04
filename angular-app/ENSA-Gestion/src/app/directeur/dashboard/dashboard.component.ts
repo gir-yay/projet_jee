@@ -1,9 +1,12 @@
 import { Component, OnInit, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { EnseignantService } from '../services/enseignant.service';
 import { EtudiantService } from '../services/etudiant.service';
 import { FormationService } from '../services/formation.service';
+import { UtilisateurService } from '../services/utilisateur.service';
 
 
 
@@ -11,7 +14,7 @@ import { FormationService } from '../services/formation.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -28,8 +31,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   isPopupOpen = false;
   selectedFile: File | null = null;
+  type : any = 'enseignant';
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private enseignantService: EnseignantService, private etudiantService: EtudiantService, private formationService: FormationService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private enseignantService: EnseignantService
+    , private etudiantService: EtudiantService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -49,6 +54,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   onUpload(): void {
     if (this.selectedFile) {
+      this.onSubmit();
       console.log(this.selectedFile);
     }
     this.closePopup(); // Ferme la popup après l'upload
@@ -128,5 +134,24 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
       this.renderer.removeClass(dropdown, 'show');
     });
+  }
+
+
+  onSubmit() {
+    if (this.selectedFile && this.type) {
+      this.utilisateurService.ajouterUtilisateur(this.selectedFile, this.type)
+        .subscribe({
+          next: (response) => {
+            console.log('Enseugnants ajoutées avec succès:', response);
+            // Afficher un message de succès ou rediriger l'utilisateur
+          },
+          error: (error) => {
+            console.error('Erreur lors de l\'ajout des enseignants:', error);
+            // Afficher un message d'erreur
+          }
+        });
+    } else {
+      console.warn('Le fichier et le type sont requis.');
+    }
   }
 }

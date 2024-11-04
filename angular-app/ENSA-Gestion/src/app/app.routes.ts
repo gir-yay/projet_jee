@@ -33,6 +33,7 @@ import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.co
 import { LiensCoursComponent } from './Etudiant/liens-cours/liens-cours.component';
 import { DocumentsCoursComponent } from './Etudiant/documents-cours/documents-cours.component';
 
+import { DetailModuleComponent } from './directeur/detail-module/detail-module.component';
 
 
 
@@ -44,9 +45,10 @@ export const routes: Routes = [
 
      //========================== espace directeur============
      { path: 'dashboard', component: DashboardComponent },
-     { path: 'formation', component: FormationComponent },
-     { path: 'ajouter-module', component: AddModuleComponent },
-     { path: 'detail-module', component: ModuleComponent },
+     { path: 'formation/:id/modules', component: ModuleComponent },
+     { path: 'formation', component: FormationComponent },     
+     { path: 'ajouter-module/:id', component: AddModuleComponent },
+     { path: 'detail-module', component: DetailModuleComponent },
      { path: 'ajouter-matiere', component: AddMatiereComponent },
      { path: 'List-etudiants', component: ListStudentsComponent },
      { path: 'List-directeurs', component: ListesDirecteursComponent },

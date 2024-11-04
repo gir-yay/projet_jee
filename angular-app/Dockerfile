@@ -2,18 +2,16 @@
 FROM node:latest
 
 RUN mkdir /app
-# Set the working directory to the Angular app's directory
 WORKDIR /app
 
-COPY ENSA-Gestion/* /app
+# Copy all project files into the container
+COPY ENSA-Gestion/ /app
 
+# Install dependencies
 RUN npm install
 
+# Install Angular CLI globally if necessary
 RUN npm install -g @angular/cli
-RUN yarn  install
 
-CMD ["ng", "serve", "--host", "0.0.0.0", ]
-
-
-
-
+# Start the application using the local Angular CLI path
+CMD ["node_modules/.bin/ng", "serve", "--host", "0.0.0.0"]

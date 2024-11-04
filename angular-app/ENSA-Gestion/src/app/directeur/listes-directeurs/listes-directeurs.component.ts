@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DirecteurService } from '../services/directeur.service';
 import { FormationService } from '../services/formation.service';
+import { UtilisateurService } from '../services/utilisateur.service';
+
 
 
 
@@ -17,6 +19,8 @@ import { FormationService } from '../services/formation.service';
 export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   isPopupOpen = false;
   selectedFile: File | null = null;
+  type : any = 'directeur';
+
 
   directeurs: any[] = [];
 
@@ -36,13 +40,14 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
 
   onUpload(): void {
     if (this.selectedFile) {
+      this.onSubmit();
       console.log(this.selectedFile);
     }
     this.closePopup(); // Ferme la popup après l'upload
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService, private formationService: FormationService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -110,5 +115,22 @@ private resetAllDropdowns(dropdowns: NodeListOf<HTMLElement>): void {
     }
     this.renderer.removeClass(dropdown, 'show');
   });
+}
+onSubmit() {
+  if (this.selectedFile && this.type) {
+    this.utilisateurService.ajouterUtilisateur(this.selectedFile, this.type)
+      .subscribe({
+        next: (response) => {
+          console.log('Directeurs ajoutés avec succès:', response);
+          // Afficher un message de succès ou rediriger l'utilisateur
+        },
+        error: (error) => {
+          console.error('Erreur lors de l\'ajout des directeurs:', error);
+          // Afficher un message d'erreur
+        }
+      });
+  } else {
+    console.warn('Le fichier et le type sont requis.');
+  }
 }
 }

@@ -10,6 +10,8 @@ export class ModuleService {
   
 
   private apiUrl = 'http://localhost:8080/directeur/formation';
+  private apiUrl2 = 'http://localhost:8080/directeur';
+  
 
 
   constructor(private httpClient: HttpClient) { }
@@ -41,4 +43,8 @@ export class ModuleService {
   }
 
   
+  ajouterModule(module: any): Observable<any> {
+    const data = { nom: module.nom, semestre: module.semestre , formationId : module.formationId }; 
+    return this.httpClient.post(`${this.apiUrl2}/module/ajouter`, data);
+  }
 }

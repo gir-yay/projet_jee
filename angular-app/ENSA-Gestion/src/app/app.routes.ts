@@ -44,7 +44,7 @@ export const routes: Routes = [
      { path: 'dashboard', component: DashboardComponent },
      { path: 'formation/:id/modules', component: ModuleComponent },
      { path: 'formation', component: FormationComponent },     
-     { path: 'ajouter-module', component: AddModuleComponent },
+     { path: 'ajouter-module/:id', component: AddModuleComponent },
      { path: 'detail-module', component: DetailModuleComponent },
      { path: 'ajouter-matiere', component: AddMatiereComponent },
      { path: 'List-etudiants', component: ListStudentsComponent },

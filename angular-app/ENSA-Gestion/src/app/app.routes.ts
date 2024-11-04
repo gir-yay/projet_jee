@@ -30,6 +30,7 @@ import { NotesComponent } from './Etudiant/notes/notes.component';
 import { MatieresComponent } from './Etudiant/matieres/matieres.component';
 import { CoursComponent as EtudiantCoursComponent } from './Etudiant/cours/cours.component';
 import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.component';
+import { DetailModuleComponent } from './directeur/detail-module/detail-module.component';
 
 
 
@@ -44,7 +45,7 @@ export const routes: Routes = [
      { path: 'formation/:id/modules', component: ModuleComponent },
      { path: 'formation', component: FormationComponent },     
      { path: 'ajouter-module', component: AddModuleComponent },
-     { path: 'detail-module', component: ModuleComponent },
+     { path: 'detail-module', component: DetailModuleComponent },
      { path: 'ajouter-matiere', component: AddMatiereComponent },
      { path: 'List-etudiants', component: ListStudentsComponent },
      { path: 'List-directeurs', component: ListesDirecteursComponent },

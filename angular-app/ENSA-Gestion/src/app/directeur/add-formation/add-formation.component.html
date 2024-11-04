@@ -8,7 +8,7 @@
 			<li>
 				<a href="#" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li *ngFor="let formation of formations"><a [routerLink]="['/formation']">{{formation.nom}}</a></li>
+					<li *ngFor="let formation of formations"><a [routerLink]="['/formation' , formation.id , 'modules']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>
@@ -18,6 +18,7 @@
 				<ul class="side-dropdown">
 					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
 					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
+					<li><a [routerLink]="['/List-directeurs']">Directeurs</a></li>
 					
 				</ul>
 			</li>

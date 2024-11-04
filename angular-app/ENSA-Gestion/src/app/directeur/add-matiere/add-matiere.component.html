@@ -1,42 +1,7 @@
 
 	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand"><i class='bx bxs-smileee icon'></i> ENSATé</a>
-		<ul class="side-menu">
-			<li><a [routerLink]="['/dashboard']" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Gestion des utilisateurs">Gestion des formations</li>
-			<li>
-				<a href="#" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a [routerLink]="['/formation']">Genie Informatique</a></li>
-					<li><a [routerLink]="['/formation']">Supply chaine management</a></li>
-					<li><a [routerLink]="['/formation']">Genie mécatronique</a></li>
-					<li><a [routerLink]="['/formation']">Genie gstr</a></li>
-                    <li><a [routerLink]="['/formation']">Big Data</a></li>
-                    <li><a [routerLink]="['/formation']">Genie civil</a></li>
-                    <li><a [routerLink]="['/formation']">Cyber securité</a></li>
-                    <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
-				</ul>
-			</li>
-			<li class="divider" data-text="Gestion des utilisateurs">Gestion des utilisateurs</li>
-			<li>
-				<a href="#"><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
-					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>
-					
-				</ul>
-			</li>
-		</ul>
-		<div class="ads">
-			<div class="wrapper">
-				<a href="#" class="btn-upgrade">Déconnecter</a>
-				<p>Accès <span>unique</span>à mes services <span>ENSA Tétouan</span></p>
-			</div>
-		</div>
-	</section>
-	<!-- SIDEBAR -->
-
+	
+	<app-formation/>
 	<!-- NAVBAR -->
 	<section id="content">
 		<!-- NAVBAR -->

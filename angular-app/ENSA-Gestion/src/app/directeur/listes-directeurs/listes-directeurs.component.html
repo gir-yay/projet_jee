@@ -9,7 +9,7 @@
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li *ngFor="let formation of formations"><a [routerLink]="['/formation']">{{formation.nom}}</a></li>
+					<li *ngFor="let formation of formations"><a [routerLink]="['/formation', formation.id , 'modules']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
 				</ul>
 			</li>

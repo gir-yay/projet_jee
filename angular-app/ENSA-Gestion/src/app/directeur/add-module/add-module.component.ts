@@ -3,12 +3,13 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { FormationService } from '../services/formation.service';
+import { FormationComponent } from "../formation/formation.component";
 
 
 @Component({
   selector: 'app-add-module',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FormationComponent],
   templateUrl: './add-module.component.html',
   styleUrl: './add-module.component.css'
 })

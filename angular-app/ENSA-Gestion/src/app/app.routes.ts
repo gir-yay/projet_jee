@@ -41,7 +41,8 @@ export const routes: Routes = [
 
      //========================== espace directeur============
      { path: 'dashboard', component: DashboardComponent },
-     { path: 'formation', component: FormationComponent },
+     { path: 'formation/:id/modules', component: ModuleComponent },
+     { path: 'formation', component: FormationComponent },     
      { path: 'ajouter-module', component: AddModuleComponent },
      { path: 'detail-module', component: ModuleComponent },
      { path: 'ajouter-matiere', component: AddMatiereComponent },

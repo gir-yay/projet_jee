@@ -1,15 +1,33 @@
 import { Component , OnInit , ElementRef, Renderer2, AfterViewInit } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { FormationService } from '../services/formation.service';
+
 
 @Component({
   selector: 'app-add-module',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './add-module.component.html',
   styleUrl: './add-module.component.css'
 })
-export class AddModuleComponent implements  AfterViewInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+export class AddModuleComponent implements  AfterViewInit, OnInit {
+  constructor(private el: ElementRef, private renderer: Renderer2,  private formationService: FormationService) {}
+
+  formations: any[] = [];
+
+  ngOnInit(): void {
+
+    this.formationService.getFormations().subscribe(
+      (data: any[]) => {
+        this.formations = data; 
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération des modules:', error);
+      }
+    );
+  }
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();

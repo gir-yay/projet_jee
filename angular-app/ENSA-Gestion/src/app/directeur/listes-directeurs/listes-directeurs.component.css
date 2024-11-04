@@ -780,7 +780,7 @@ thead th.active,tbody td.active {
   
   /* Styles pour l'en-tête de la popup */
   .modal-header {
-	background-color:#0e4894;
+	/*background-color:#0e4894;*/
 	color: white;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -831,3 +831,119 @@ thead th.active,tbody td.active {
 	border: none;
 	padding: 5px;
   }
+
+  
+/* Style pour le fond semi-transparent */
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+  }
+  .modal-body{
+	margin: 30px;
+  }
+  /* Style pour la boite modale */
+  .popup-custom {
+	max-width: 500px;
+	border-radius: 8px;
+	background: #f9f9f9;
+  }
+
+  /* Styles pour l'en-tête de la popup */
+  .modal-header {
+	background-color:#0e4894;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex; /* Utiliser flexbox pour l'en-tête */
+    justify-content: space-between; /* Espacement entre le titre et le bouton de fermeture */
+    align-items: center; /* Centrer verticalement les éléments */
+    padding: 1rem; /* Espacement autour de l'en-tête */
+  }
+  
+
+
+  .modal-header h5 {
+	font-weight: bold;
+	padding: 5px;
+
+  }
+  
+  .modal-header .bg-primary{
+	background-color: #0e4894;
+  }
+  .btn-close {
+	background: transparent;
+	color: rgb(10, 1, 1);
+	opacity: 1;
+	margin-left: 250px;
+	
+  }
+  .close{
+	background:#0e4894;
+	color: #fff;
+	opacity: 1;
+	border: none;
+	padding-top: 0;
+	margin-left: 460px;
+	margin-bottom: 4px;
+	position: fixed;
+  }
+ .text-white{
+	padding-top: 0;
+
+  }
+
+  /* Effet d'ombre et d'arrondi */
+  .modal-content {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+  }
+
+  /* Animation d'apparition pour la popup */
+  .fade.show {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Styles pour le bouton */
+  .btn-primary {
+	margin: 10px;
+	background-color: #0e4894;
+	border: none;
+	padding: 5px;
+  }
+  .btn-secondary{
+	margin: 10px;
+	background-color: #585c62;
+	border: none;
+	padding: 5px;
+  }
+  
+.modal {
+    display: block; /* Rendre le modal visible */
+    position: fixed; /* Positionner le modal par rapport à la fenêtre */
+    z-index: 1050; /* Assurez-vous que le modal est au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%; /* Occuper toute la largeur */
+    height: 100%; /* Occuper toute la hauteur */
+    overflow: auto; /* Permet le défilement si le contenu dépasse */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+.modal-dialog {
+    position: relative; /* Positionner le contenu du modal */
+    margin: auto; /* Centrer le modal horizontalement */
+    top: 10%; /* Espacement depuis le haut de la fenêtre */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fond blanc pour le contenu */
+    border: 1px solid #dee2e6; /* Bordure légère */
+    border-radius: 0.5rem; /* Coins arrondis */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Ombre légère */
+    max-width: 500px; /* Largeur maximale */
+    margin: auto; /* Centrer le contenu du modal */
+}

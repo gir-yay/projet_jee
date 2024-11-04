@@ -6,7 +6,7 @@
 			<li><a [routerLink]="['/dashboard']" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li class="divider" data-text="Gestion des utilisateurs">Gestion des formations</li>
 			<li>
-				<a href="" class="active"><i class='bx bxs-inbox icon' ></i> Formations <i class='bx bx-chevron-right icon-right' ></i></a>
+				<a href="" class="active"><i class='bx bxs-graduation icon'></i>Formations <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
 					<li *ngFor="let formation of formations"><a [routerLink]="['/formation' , formation.id , 'modules']">{{formation.nom}}</a></li>
                     <li><a [routerLink]="['/ajouter-formation']">+ Ajouter une formation</a></li>
@@ -14,7 +14,7 @@
 			</li>
 			<li class="divider" data-text="Gestion des utilisateurs">Gestion des utilisateurs</li>
 			<li>
-				<a href=""><i class='bx bxs-notepad icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
+				<a href=""><i class='bx bxs-user icon' ></i> Utilisateurs <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
 					<li><a [routerLink]="['/dashboard']">Enseignants</a></li>
 					<li><a [routerLink]="['/List-etudiants']">Etudiants</a></li>

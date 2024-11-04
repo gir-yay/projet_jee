@@ -2,10 +2,10 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a [routerLink]="['etudiant/dashboard']" ><i class='bx bxs-dashboard icon'></i> Acceuil</a>
+        <li><a [routerLink]="['etudiant/dashboard']" class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
         </li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a [routerLink]="['/notes']" class="active"> <i class='bx bxs-notepad icon'></i>Mes notes</a></li>
+        <li><a [routerLink]="['/notes']"> <i class='bx bxs-notepad icon'></i>Mes notes</a></li>
 
     
     </ul>
@@ -43,7 +43,7 @@
 
     <!-- MAIN -->
     <main>
-        <h1 class="title">This is the {{ coursNom }}</h1>
+        <h1 class="title">Liste des liens du cours</h1>
         <div class="info-data">
             <!-- Content for course links -->
         </div>

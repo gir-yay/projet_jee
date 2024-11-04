@@ -296,8 +296,8 @@ public class UtilisateurService {
         if (!enseignant.isPresent()) {
             return "L'enseignant n'existe pas";
         }
-        enseignant.get().setStatus(false);
-        ;
+        enseignant.get().setStatus(!enseignant.get().isStatus());
+        
         enseignantRepository.save(enseignant.get());
         return null;
     }
@@ -307,11 +307,12 @@ public class UtilisateurService {
         if (!etudiant.isPresent()) {
             return "L'étudiant n'existe pas";
         }
-        etudiant.get().setStatus(false);
-        ;
+        etudiant.get().setStatus(!etudiant.get().isStatus());
+        
         etudiantRepository.save(etudiant.get());
         return null;
     }
+
 
 
     public Etudiant getEtudiant(int id) {

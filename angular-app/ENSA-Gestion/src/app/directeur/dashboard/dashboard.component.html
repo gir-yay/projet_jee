@@ -163,7 +163,7 @@
 								  {{ enseignant.status ? 'Active' : 'Inactive' }}
 								</p>
                               </td>
-                              <td><button class="btn btn-primary" (click)="onArchive(enseignant.id)">Archiver</button></td>
+                              <td><button class="btn btn-primary" (click)="onArchive(enseignant.id)">{{ enseignant.status ? 'Archiver' : 'Désarchiver' }}</button></td>
                           </tr>
                       </tbody>
                   </table>

@@ -313,6 +313,16 @@ public class UtilisateurService {
         return null;
     }
 
+    public String archiverDirecteur(int id) {
+        Optional<Directeur> directeur = directeurRepository.findById(id);
+        if (!directeur.isPresent()) {
+            return "Le directeur n'existe pas";
+        }
+        directeur.get().setStatus(!directeur.get().isStatus());
+        ;
+        directeurRepository.save(directeur.get());
+        return null;
+    }
 
 
     public Etudiant getEtudiant(int id) {
@@ -335,15 +345,6 @@ public class UtilisateurService {
         }
     }
 
-    public String archiverDirecteur(int id) {
-        Optional<Directeur> directeur = directeurRepository.findById(id);
-        if (!directeur.isPresent()) {
-            return "Le directeur n'existe pas";
-        }
-        directeur.get().setStatus(false);
-        ;
-        directeurRepository.save(directeur.get());
-        return null;
-    }
+
 
 }

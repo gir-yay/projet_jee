@@ -142,6 +142,12 @@ onSubmit() {
   }
 }
 
+fetchData() {
+  this.etudiantService.getEtudiants().subscribe((data) => {
+    this.etudiants = data;
+  });
+}
+
 
 onArchive(id: number){
   this.user.id = id;
@@ -150,6 +156,7 @@ onArchive(id: number){
         (response) => {
           console.log('etudiant archivé avec succès:', response);
           this.router.navigateByUrl('List-etudiants');
+          this.fetchData();
         },
         (error) => {
           console.error("Erreur lors de l'archivage de l etudiant:", error);

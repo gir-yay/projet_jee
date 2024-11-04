@@ -162,6 +162,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
+  fetchData() {
+    this.enseignantService.getEnseignants().subscribe((data) => {
+      this.enseignants = data;
+    });
+  }
+
   onArchive(id: number){
     this.user.id = id;
     this.utilisateurService.archiverUtilisateur(this.user)
@@ -169,6 +175,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           (response) => {
             console.log('enseignant archivé avec succès:', response);
             this.router.navigateByUrl('dashboard');
+            this.fetchData();
           },
           (error) => {
             console.error("Erreur lors de l'archivage de l enseignant:", error);

@@ -131,7 +131,7 @@
 									{{ directeur.status ? 'Active' : 'Inactive' }}
 								  </p>
                               </td>
-							  <td><button class="btn btn-primary" (click)="onArchive(directeur.id)">Archiver</button></td>
+							  <td><button class="btn btn-primary" (click)="onArchive(directeur.id)">{{ directeur.status ? 'Archiver' : 'Désarchiver' }}</button></td>
                           </tr>
                       </tbody>
                   </table>

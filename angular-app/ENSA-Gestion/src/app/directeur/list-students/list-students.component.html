@@ -130,7 +130,7 @@
 									{{ etudiant.status ? 'Active' : 'Inactive' }}
 								  </p>
                               </td>
-							  <td><button class="btn btn-primary" (click)="onArchive(etudiant.id)">Archiver</button></td>
+							  <td><button class="btn btn-primary" (click)="onArchive(etudiant.id)">{{ etudiant.status ? 'Archiver' : 'Désarchiver' }}</button></td>
                           </tr>
                       </tbody>
                   </table>

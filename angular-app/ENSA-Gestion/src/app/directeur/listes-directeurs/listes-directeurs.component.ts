@@ -141,6 +141,13 @@ onSubmit() {
   }
 }
 
+fetchData() {
+  // Call a method in your service to get the enseignants data
+  this.directeurService.getDirecteurs().subscribe((data) => {
+    this.directeurs = data;
+  });
+}
+
 onArchive(id: number){
   this.user.id = id;
   this.utilisateurService.archiverUtilisateur(this.user)
@@ -148,6 +155,7 @@ onArchive(id: number){
         (response) => {
           console.log('Directeur archivé avec succès:', response);
           this.router.navigateByUrl('List-directeurs');
+          this.fetchData();
         },
         (error) => {
           console.error("Erreur lors de l'archivage du directeur:", error);

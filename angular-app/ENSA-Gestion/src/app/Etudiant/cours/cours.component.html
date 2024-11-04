@@ -55,7 +55,7 @@
                     <div class="box" *ngFor="let cours of cours">
                         <img src="../../images/cours.jpeg" alt="">
                         <h3>{{ cours.nom }}</h3>
-                        <a class="btn">Voir les details du cours</a>
+                        <a [routerLink]="['/cours-details', cours.id]" class="btn">Voir les détails du cours</a>
                     </div>
                 </div>
             </div>

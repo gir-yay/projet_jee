@@ -1,21 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-cours-details',
   standalone: true,
-  imports: [ RouterModule],
   templateUrl: './cours-details.component.html',
-  styleUrl: './cours-details.component.css'
+  imports: [
+    CommonModule,
+    RouterModule, 
+  ],
+  styleUrls: ['./cours-details.component.css']
 })
-export class CoursDetailsComponent {
-  isDropdownOpen = false;
+export class CoursDetailsComponent implements OnInit {
+  coursId: string | null = null;
 
+  constructor(private route: ActivatedRoute) {}
 
-
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
+  ngOnInit(): void {
+    this.coursId = this.route.snapshot.paramMap.get('id');
+    
   }
-
 }

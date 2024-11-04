@@ -15,7 +15,6 @@ export class DashboardComponent implements OnInit {
   modules: any[] = []; 
   matieres: any[] = [];
   isDropdownOpen = false;
-  isCoursesDropdownOpen = false;
 
   constructor(private moduleService: ModuleService) {}
 
@@ -34,7 +33,5 @@ export class DashboardComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  toggleCoursesDropdown() {
-    this.isCoursesDropdownOpen = !this.isCoursesDropdownOpen;
-  }
+  
 }

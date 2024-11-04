@@ -1,10 +1,10 @@
 <section id="sidebar">
     <a href="#" class="brand"><img src="../../images/logo2.png" class="ensa-logo">ENSATé</a>
     <ul class="side-menu">
-        <li><a [routerLink]="['etudiant/dashboard']" class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
+        <li><a  class="active"><i class='bx bxs-dashboard icon'></i> Acceuil</a>
         </li>
         <li class="divider" data-text="table and forms">Section des notes</li>
-        <li><a [routerLink]="['/notes']"> <i class='bx bxs-notepad icon'></i>Mes notes</a></li>
+        <li><a> <i class='bx bxs-notepad icon'></i>Mes notes</a></li>
 
     
     </ul>
@@ -34,6 +34,7 @@
         <div class="profile">
             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
             <ul class="profile-link">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="">
                 <li><a href="#"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
                 <li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
                 <li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
@@ -43,22 +44,18 @@
 
     <main>
         <h1 class="title">Technologies JEE</h1>
-        <ul class="breadcrumbs">
-            <li><a routerLink="/cours">Cours</a></li>
-            <li class="divider">/</li>
-            <li><a routerLink="/cours1" class="active">Technologies JEE</a></li>
-        </ul>
+      
         <div class="info-data">
             <div class="content-box">
                 <div class="card">
                     <i class='bx bx-task bx-md'></i>
-                    <h2>Devoirs</h2>
-                    <p>Marketing services can include advertising, public relations, market research, and more.</p>
+                    <h2>Documents</h2>
+                    <button [routerLink]="['/cours', coursId, 'documents']">Voir les Documents</button>
                 </div>
                 <div class="card">
                     <i class='bx bx-link-alt bx-md'></i>
                     <h2>Liens</h2>
-                    <p>Web development refers to the creating, building, and maintaining of websites.</p>
+                    <button [routerLink]="['/cours', coursId, 'liens']">Consulter</button>
                 </div>
 
             </div>

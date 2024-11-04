@@ -30,6 +30,9 @@ import { NotesComponent } from './Etudiant/notes/notes.component';
 import { MatieresComponent } from './Etudiant/matieres/matieres.component';
 import { CoursComponent as EtudiantCoursComponent } from './Etudiant/cours/cours.component';
 import { CoursDetailsComponent } from './Etudiant/cours-details/cours-details.component';
+import { LiensCoursComponent } from './Etudiant/liens-cours/liens-cours.component';
+import { DocumentsCoursComponent } from './Etudiant/documents-cours/documents-cours.component';
+
 
 
 
@@ -70,12 +73,19 @@ export const routes: Routes = [
      { path: 'enseignant/matiere/:id/add/notes', component:  AddNotesComponent},
 //===========================================================================================
 
-     //Espace Etudiant
+//=================================Espace Etudiant ======================================
+//Dashboard de l'etudiant
      { path: 'etudiant/dashboard', component: EtudiantDashboardComponent },
+// Notes de l'etudiant
      { path: 'notes', component: NotesComponent },
+//Les matieres
      { path: 'matieres/:id', component: MatieresComponent },
+//les cours des matieres
      { path: 'matieres/:matiereId/cours', component: EtudiantCoursComponent},
-     { path: 'matieres/cours/:id', component: CoursDetailsComponent},
+// Les details d'un cours (documents / liens)
+     {  path: 'cours-details/:id', component: CoursDetailsComponent},
+     {  path: 'cours/:id/liens', component: LiensCoursComponent},
+     { path: 'cours/:id/documents', component: DocumentsCoursComponent },
 
      { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

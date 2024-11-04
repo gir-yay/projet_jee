@@ -1,49 +1,124 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModuleService {
   private apiUrl = 'http://localhost:8080/etudiant/modules';
+  private coursApiUrl = 'http://localhost:8080/enseignant/cours';
 
+  constructor(private httpClient: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
-  constructor(private httpClient: HttpClient) {}
-
-  getModules() {
+  //=========================== Les modules  ===============================================
+  getModules(): Observable<any[]> {
     let headers = new HttpHeaders();
-    if (typeof window !== 'undefined' && localStorage.getItem('token')) {
-        headers = headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    const token = localStorage.getItem('token');
+    if (token) {
+        headers = headers.set('Authorization', `Bearer ${token}`);
     }
-    return this.httpClient.get<any[]>(this.apiUrl);
-}
-
-getMatieres(moduleId: number): Observable<any[]> {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    throw new Error('Aucun token trouvé');
+    return this.httpClient.get<any[]>(this.apiUrl, { headers });
   }
 
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  });
+  //================  get subjects (matières) for a module  ==============================
+  getMatieres(moduleId: number): Observable<any[]> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Aucun token trouvé');
+    }
 
-  return this.httpClient.get<any[]>(`${this.apiUrl}/${moduleId}/matieres`);
-}
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
 
-
-getCours(matiereId: number): Observable<any[]> {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    throw new Error('Aucun token trouvé');
+    return this.httpClient.get<any[]>(`${this.apiUrl}/${moduleId}/matieres`, { headers });
   }
 
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  });
+  //======================= get courses for a subject ===============================
+  getCours(matiereId: number): Observable<any[]> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Aucun token trouvé');
+    }
 
-  const url = `${this.apiUrl}/matieres/${matiereId}/cours`;
-  console.log('Fetching cours from:', url); // Affiche l'URL pour vérification
-  return this.httpClient.get<any[]>(url, { headers });}
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const url = `${this.apiUrl}/matieres/${matiereId}/cours`;
+    console.log('Fetching cours from:', url); // For debugging
+    return this.httpClient.get<any[]>(url, { headers });
+  }
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+
+  //=========================  get links by course ID  ========================================
+  getLiensByCoursId(coursId: number): Observable<any[]> {
+    // Check if we are in a browser environment
+    if (typeof window === 'undefined') {
+      throw new Error('localStorage is not available in non-browser environments');
+    }
+  
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token not found');
+    }
+  
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    const url = `http://localhost:8080/etudiant/modules/matieres/cours/${coursId}/liens`;
+    return this.httpClient.get<any[]>(url, { headers });
+  }
+
+  //=========================== get course details by ID ===============================
+
+  getCoursById(coursId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Aucun token trouvé');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.httpClient.get<any>(`${this.coursApiUrl}/${coursId}`, { headers });
+  }
+
+
+
+   //============================== récupérer les documents d'un cours ===========================
+
+   getDocumentsByCoursId(coursId: number): Observable<any[]> {
+    let token = null;
+
+    // Vérifier si on est dans un environnement de navigateur
+    if (isPlatformBrowser(this.platformId)) {
+      token = localStorage.getItem('token');
+    }
+
+    if (!token) {
+      throw new Error('Token not found');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const url = `${this.apiUrl}/matieres/cours/${coursId}/documents`;
+    return this.httpClient.get<any[]>(url, { headers });
+  }
+
+  private baseUrl = 'http://localhost:8080/etudiant/modules/matieres/cours/documents'; 
+
+   //================================== télécharger un document ==================================
+   downloadDocument(documentId: number): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}/etudiant/modules/matieres/cours/documents/download/${documentId}`, { responseType: 'blob' });
+  }
 }

@@ -24,7 +24,7 @@ export class EnseignantService {
       'Authorization': `Bearer ${token}` 
     });
     
-    return this.httpClient.get<any[]>(`${this.apiUrl}/enseignants`, { headers });
+    return this.httpClient.get<any[]>(`${this.apiUrl}/enseignants`);
   }
 
   getMatiere(enseignantId : number): Observable<any[]> {
@@ -37,6 +37,6 @@ export class EnseignantService {
       'Authorization': `Bearer ${token}` 
     });
     
-    return this.httpClient.get<any[]>(`${this.apiUrl}/enseignants/${enseignantId}/matiere`, { headers });
+    return this.httpClient.get<any[]>(`${this.apiUrl}/enseignants/${enseignantId}/matiere`);
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit , ElementRef, Renderer2, AfterViewInit } from '@angul
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 import { EtudiantService } from '../services/etudiant.service';
 import { FormationService } from '../services/formation.service';
@@ -22,7 +24,10 @@ export class ListStudentsComponent   implements OnInit , AfterViewInit  {
   selectedFile: File | null = null;
   type : any = 'etudiant';
 
-
+  user={
+    type: this.type,
+    id:0
+  }
   etudiants: any[] = [];
   nb_etu : any;
 
@@ -49,7 +54,7 @@ export class ListStudentsComponent   implements OnInit , AfterViewInit  {
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private etudiantService: EtudiantService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private router: Router, private etudiantService: EtudiantService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -136,4 +141,22 @@ onSubmit() {
     console.warn('Le fichier et le type sont requis.');
   }
 }
+
+
+onArchive(id: number){
+  this.user.id = id;
+  this.utilisateurService.archiverUtilisateur(this.user)
+      .subscribe(
+        (response) => {
+          console.log('etudiant archivé avec succès:', response);
+          this.router.navigateByUrl('List-etudiants');
+        },
+        (error) => {
+          console.error("Erreur lors de l'archivage de l etudiant:", error);
+        }
+    
+
+      );
+  } 
+
 }

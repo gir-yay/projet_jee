@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, Renderer2, AfterViewInit } from '@angula
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 import { EnseignantService } from '../services/enseignant.service';
 import { EtudiantService } from '../services/etudiant.service';
@@ -33,7 +35,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   selectedFile: File | null = null;
   type : any = 'enseignant';
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private enseignantService: EnseignantService
+  user={
+    type: this.type,
+    id:0
+  }
+
+  constructor(private el: ElementRef, private renderer: Renderer2, private enseignantService: EnseignantService ,private router: Router
     , private etudiantService: EtudiantService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
 
   ngAfterViewInit(): void {
@@ -154,4 +161,24 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.warn('Le fichier et le type sont requis.');
     }
   }
+
+  onArchive(id: number){
+    this.user.id = id;
+    this.utilisateurService.archiverUtilisateur(this.user)
+        .subscribe(
+          (response) => {
+            console.log('enseignant archivé avec succès:', response);
+            this.router.navigateByUrl('dashboard');
+          },
+          (error) => {
+            console.error("Erreur lors de l'archivage de l enseignant:", error);
+          }
+      
+
+        );
+    } 
+
+  
+
+  
 }

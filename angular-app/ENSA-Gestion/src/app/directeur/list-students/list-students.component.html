@@ -116,6 +116,7 @@
                               <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+							  <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -125,10 +126,11 @@
                               <td> {{etudiant.prenom}}</td>
                               <td> {{etudiant.email}}</td>
                               <td>
-								<p [ngClass]="etudiant.status ? 'status cancelled' : 'status delivered'">
-									{{ etudiant.status ? 'Inactive' : 'Active' }}
+								<p [ngClass]="etudiant.status ? 'status delivered' : 'status cancelled'">
+									{{ etudiant.status ? 'Active' : 'Inactive' }}
 								  </p>
                               </td>
+							  <td><button class="btn btn-primary" (click)="onArchive(etudiant.id)">Archiver</button></td>
                           </tr>
                       </tbody>
                   </table>

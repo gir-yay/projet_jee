@@ -131,6 +131,15 @@ public class UtilisateurController {
                     response.put("status", "success");
                 return response;
             }
+            case "directeur": {
+                String result = utilisateurService.archiverDirecteur(archiverDto.getId());
+                if (result != null) {
+                    response.put("status", "error");
+                    response.put("message", result);
+                } else
+                    response.put("status", "success");
+                return response;
+            }
             default: {
                 response.put("status", "error");
                 response.put("message", "Type d'utilisateur invalide.");

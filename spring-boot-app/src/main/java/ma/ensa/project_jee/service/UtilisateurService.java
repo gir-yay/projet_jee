@@ -333,4 +333,16 @@ public class UtilisateurService {
             directeurRepository.save(directeur);
         }
     }
+
+    public String archiverDirecteur(int id) {
+        Optional<Directeur> directeur = directeurRepository.findById(id);
+        if (!directeur.isPresent()) {
+            return "Le directeur n'existe pas";
+        }
+        directeur.get().setStatus(false);
+        ;
+        directeurRepository.save(directeur.get());
+        return null;
+    }
+
 }

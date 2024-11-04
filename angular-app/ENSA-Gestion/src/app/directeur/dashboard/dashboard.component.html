@@ -147,6 +147,8 @@
                               <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+
                               <!--<th> Matier <span class="icon-arrow">&UpArrow;</span></th>-->
                           </tr>
                       </thead>
@@ -157,11 +159,11 @@
                               <td> {{enseignant.prenom}} </td>
                               <td> {{enseignant.email}}</td>
                               <td>
-								<p [ngClass]="enseignant.status ? 'status cancelled' : 'status delivered'">
-								  {{ enseignant.status ? 'Inactive' : 'Active' }}
+								<p [ngClass]="enseignant.status ? 'status delivered' : 'status cancelled'">
+								  {{ enseignant.status ? 'Active' : 'Inactive' }}
 								</p>
                               </td>
-                              <!--<td> <strong> Resaux </strong></td>-->
+                              <td><button class="btn btn-primary" (click)="onArchive(enseignant.id)">Archiver</button></td>
                           </tr>
                       </tbody>
                   </table>

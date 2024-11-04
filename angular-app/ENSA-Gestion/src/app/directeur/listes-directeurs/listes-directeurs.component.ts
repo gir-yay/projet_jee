@@ -1,6 +1,9 @@
 import { Component,OnInit , ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 import { DirecteurService } from '../services/directeur.service';
 import { FormationService } from '../services/formation.service';
 import { UtilisateurService } from '../services/utilisateur.service';
@@ -21,6 +24,10 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   selectedFile: File | null = null;
   type : any = 'directeur';
 
+  user={
+    type: this.type,
+    id:0
+  }
 
   directeurs: any[] = [];
 
@@ -47,7 +54,7 @@ export class ListesDirecteursComponent implements OnInit ,AfterViewInit {
   }
 
 
-  constructor(private el: ElementRef, private renderer: Renderer2, private directeurService: DirecteurService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private router: Router, private directeurService: DirecteurService, private formationService: FormationService, private utilisateurService: UtilisateurService) {}
 
   ngAfterViewInit(): void {
     this.initializeSidebarDropdown();
@@ -133,4 +140,21 @@ onSubmit() {
     console.warn('Le fichier et le type sont requis.');
   }
 }
+
+onArchive(id: number){
+  this.user.id = id;
+  this.utilisateurService.archiverUtilisateur(this.user)
+      .subscribe(
+        (response) => {
+          console.log('Directeur archivé avec succès:', response);
+          this.router.navigateByUrl('List-directeurs');
+        },
+        (error) => {
+          console.error("Erreur lors de l'archivage du directeur:", error);
+        }
+    
+
+      );
+  } 
+
 }

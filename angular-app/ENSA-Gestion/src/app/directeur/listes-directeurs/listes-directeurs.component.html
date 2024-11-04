@@ -106,18 +106,7 @@
                   <div class="input-group">
                       <input type="search" placeholder="Rechercher...">
                   </div>
-				  <!--
-                  <div class="export__file">
-                      <label for="export-file" class="export__file-btn" title="Export File"></label>
-                      <input type="checkbox" id="export-file">
-                      <div class="export__file-options">
-                          <label>Export As &nbsp; &#10140;</label>
-                          <label for="export-file" id="toJSON">JSON <img src="../../images/json.png" alt=""></label>
-                          <label for="export-file" id="toCSV">CSV <img src="../../images/csv.png" alt=""></label>
-                          <label for="export-file" id="toEXCEL">EXCEL <img src="../../images/excel.png" alt=""></label>
-                      </div>
-                  </div>
-				-->
+			
               </section>
               <section class="table__body">
                   <table>
@@ -128,6 +117,7 @@
                               <th> Prenom <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                               <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+							  <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -137,10 +127,11 @@
                               <td> {{directeur.prenom}} </td>
                               <td> {{directeur.email}}</td>
                               <td>
-								<p [ngClass]="directeur.status ? 'status cancelled' : 'status delivered'">
-									{{ directeur.status ? 'Inactive' : 'Active' }}
+								<p [ngClass]="directeur.status ? 'status delivered' : 'status cancelled'">
+									{{ directeur.status ? 'Active' : 'Inactive' }}
 								  </p>
                               </td>
+							  <td><button class="btn btn-primary" (click)="onArchive(directeur.id)">Archiver</button></td>
                           </tr>
                       </tbody>
                   </table>
